@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+  <title>Киото · карта</title>
+  <meta name="description" content="Личная карта мест Киото: что посмотреть, часы, билеты, толпы.">
+  <meta name="theme-color" content="#f6f1e7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1b1a18" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Киото">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="stylesheet" href="vendor/leaflet.css">
+  <link rel="stylesheet" href="style.css?v=5">
+</head>
+<body>
+  <div id="map" aria-label="Карта Киото"></div>
+
+  <header class="topbar">
+    <div class="searchrow">
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input id="q" type="search" placeholder="Поиск: храм, район, 清水…" autocomplete="off" enterkeyhint="search">
+      </div>
+      <button class="iconbtn" id="btn-menu" aria-label="Меню">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="12" r="1.6"/><circle cx="12" cy="12" r="1.6"/><circle cx="19" cy="12" r="1.6"/></svg>
+      </button>
+    </div>
+    <nav class="chips" id="chips" aria-label="Фильтры"></nav>
+  </header>
+
+  <div class="fabs">
+    <button class="fab" id="btn-locate" aria-label="Где я">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5"/></svg>
+    </button>
+    <button class="fab fab-wide" id="btn-list" aria-label="Список мест">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg>
+      <span id="count">Список</span>
+    </button>
+  </div>
+
+  <!-- Place details -->
+  <section class="sheet" id="sheet" aria-hidden="true">
+    <div class="grab" id="grab"><span></span></div>
+    <button class="close" id="sheet-close" aria-label="Закрыть">×</button>
+    <div class="sheet-body" id="sheet-body"></div>
+  </section>
+
+  <!-- List -->
+  <section class="sheet list-sheet" id="list" aria-hidden="true">
+    <div class="grab"><span></span></div>
+    <button class="close" id="list-close" aria-label="Закрыть">×</button>
+    <div class="list-head">
+      <h2 id="list-title">Места</h2>
+      <div class="seg" id="sort">
+        <button data-sort="priority" class="on">Важные</button>
+        <button data-sort="dist">Рядом</button>
+        <button data-sort="num">№</button>
+      </div>
+    </div>
+    <div class="sheet-body" id="list-body"></div>
+  </section>
+
+  <!-- Menu -->
+  <section class="sheet menu-sheet" id="menu" aria-hidden="true">
+    <div class="grab"><span></span></div>
+    <button class="close" id="menu-close" aria-label="Закрыть">×</button>
+    <div class="sheet-body" id="menu-body"></div>
+  </section>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="close" id="lb-close" aria-label="Закрыть">×</button>
+    <div class="lb-track" id="lb-track"></div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="vendor/leaflet.js"></script>
+  <script src="app.js?v=5"></script>
+</body>
+</html>
