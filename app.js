@@ -16,6 +16,15 @@ const CATS = {
   museum: { label: 'Музеи', one: 'Музей', color: 'var(--c-museum)' },
   other: { label: 'Другое', one: 'Достопримечательность', color: 'var(--c-other)' },
 };
+const HOTEL = {
+  name: 'Shizutetsu Hotel Prezio Kyoto Shijo',
+  name_ja: '静鉄ホテルプレジオ京都四条',
+  lat: 35.00507, lng: 135.7549,
+  address_ja: '京都市中京区西洞院通錦小路上る古西町452',
+  address_en: '452 Konishi-cho, Nishinotoin-dori Nishikikoji-agaru, Nakagyo-ku, Kyoto 604-8227',
+  phone: '075-741-7891',
+  station: 'Метро «Сидзё» (линия Карасума) или Hankyu «Карасума» — 6 мин пешком; станции соединены под землёй',
+};
 const CROWD_TXT = ['', 'почти пусто', 'спокойно', 'умеренно', 'людно', 'очень людно'];
 
 const state = {
@@ -108,6 +117,8 @@ function distKm(a, b) {
   const x = Math.sin(dLat / 2) ** 2 + Math.cos(a[0] * r) * Math.cos(b[0] * r) * Math.sin(dLng / 2) ** 2;
   return 2 * R * Math.asin(Math.sqrt(x));
 }
+// distance origin: current position if known, otherwise the hotel
+const origin = () => (state.me ? { at: state.me, label: 'от вас' } : { at: [HOTEL.lat, HOTEL.lng], label: 'от отеля' });
 const fmtDist = (km) => (km < 1 ? `${Math.round(km * 1000 / 10) * 10} м` : `${km.toFixed(km < 10 ? 1 : 0)} км`);
 
 /* ---------------- filters ---------------- */
@@ -211,6 +222,7 @@ function closeSheet(id, silent) {
     if (!silent && location.hash) history.replaceState(null, '', location.pathname + location.search);
     applyFilter();
   }
+  if (id === 'sheet' && !silent && location.hash === '#hotel') history.replaceState(null, '', location.pathname + location.search);
 }
 $('#sheet-close').onclick = () => closeSheet('sheet');
 $('#list-close').onclick = () => closeSheet('list');
@@ -270,7 +282,8 @@ function renderPlace(p) {
   const gallery = photos.length
     ? `<div class="gallery">${photos.map((ph, i) => `<img src="${esc(ph.src)}" alt="" loading="${i ? 'lazy' : 'eager'}" data-i="${i}">`).join('')}</div>`
     : `<div class="gallery-empty">Фото нет</div>`;
-  const dist = state.me ? ` · ${fmtDist(distKm(state.me, [p.lat, p.lng]))} от вас` : '';
+  const o = origin();
+  const dist = ` · ${fmtDist(distKm(o.at, [p.lat, p.lng]))} ${o.label}`;
   const visited = state.visited.has(p.id), fav = state.favs.has(p.id);
   const crowdBar = c.level
     ? `<div class="crowd">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= c.level ? 'f' + c.level : ''}"></i>`).join('')}<span>${CROWD_TXT[c.level]} в пик</span></div>`
@@ -351,21 +364,71 @@ function selectPlace(id, { fly = true, push = true } = {}) {
   openSheet('sheet');
   if (push && location.hash !== `#p${id}`) history.pushState({ p: id }, '', `#p${id}`);
 
-  if (fly) {
-    const wide = matchMedia('(min-width: 820px)').matches;
-    const z = Math.max(map.getZoom(), 14);
-    // keep the marker visible above the bottom sheet / right of the side panel
-    const target = map.project([p.lat, p.lng], z);
-    const off = wide ? L.point(-205, 0) : L.point(0, window.innerHeight * 0.28);
-    map.flyTo(map.unproject(target.add(off), z), z, { duration: 0.5 });
-  }
+  if (fly) flyAboveSheet(p.lat, p.lng);
 }
+
+// keep the point visible above the bottom sheet / right of the side panel
+function flyAboveSheet(lat, lng) {
+  const wide = matchMedia('(min-width: 820px)').matches;
+  const z = Math.max(map.getZoom(), 14);
+  const target = map.project([lat, lng], z);
+  const off = wide ? L.point(-205, 0) : L.point(0, window.innerHeight * 0.28);
+  map.flyTo(map.unproject(target.add(off), z), z, { duration: 0.5 });
+}
+
+/* ---------------- hotel ---------------- */
+const ICON_BED = '<svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.6"/></svg>';
+const hotelMarker = L.marker([HOTEL.lat, HOTEL.lng], {
+  icon: L.divIcon({ className: 'pinwrap', html: `<div class="hotel-pin">${ICON_BED}</div>`, iconSize: [38, 38], iconAnchor: [19, 19] }),
+  zIndexOffset: 3000,
+}).addTo(map);
+hotelMarker.bindTooltip('Наш отель', { permanent: true, direction: 'bottom', className: 'lbl hotel-lbl', offset: [0, 18] });
+hotelMarker.on('click', openHotel);
+
+function renderHotel() {
+  const q = encodeURIComponent(HOTEL.name);
+  return `<div class="pd" style="padding-top:22px">
+    <div class="pd-title">
+      <div class="pd-num hotel-num">${ICON_BED}</div>
+      <div><h1>Наш отель</h1><div class="sub">${esc(HOTEL.name)}</div></div>
+    </div>
+    <div class="actions">
+      <a class="btn primary" href="https://www.google.com/maps/dir/?api=1&destination=${q}&travelmode=transit" target="_blank" rel="noopener">${ICON_ROUTE}Домой</a>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">${ICON_MAP}Google Maps</a>
+      <a class="btn" href="tel:${HOTEL.phone.replace(/-/g, '')}">📞 Позвонить</a>
+      <button class="btn" data-act="copy">📋 Адрес</button>
+    </div>
+    <div class="taxi">
+      <b>Для таксиста</b>
+      <div class="taxi-name">${esc(HOTEL.name_ja)}</div>
+      <div class="taxi-addr">${esc(HOTEL.address_ja)}</div>
+      <div class="taxi-tel">TEL ${esc(HOTEL.phone)}</div>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="ic">🚇</div><div><h3>Ближайшие станции</h3><p>${esc(HOTEL.station)}</p></div></div>
+      <div class="fact"><div class="ic">📍</div><div><h3>Адрес</h3><p>${esc(HOTEL.address_en)}</p></div></div>
+    </div>
+  </div>`;
+}
+function openHotel() {
+  if (state.selected != null) { const prev = state.selected; state.selected = null; refreshMarker(prev); }
+  $('#sheet-body').innerHTML = renderHotel();
+  $('#sheet-body').scrollTop = 0;
+  openSheet('sheet');
+  if (location.hash !== '#hotel') history.pushState({}, '', '#hotel');
+  flyAboveSheet(HOTEL.lat, HOTEL.lng);
+}
+$('#btn-hotel').onclick = openHotel;
 
 $('#sheet-body').addEventListener('click', (e) => {
   const img = e.target.closest('.gallery img');
   if (img) return openLightbox(state.byId.get(state.selected), +img.dataset.i);
   const b = e.target.closest('[data-act]');
   if (!b) return;
+  if (b.dataset.act === 'copy') {
+    navigator.clipboard?.writeText(`${HOTEL.name_ja}\n${HOTEL.address_ja}`).then(() => toast('Адрес скопирован'), () => toast(HOTEL.address_ja));
+    return;
+  }
   const id = state.selected;
   const set = b.dataset.act === 'visited' ? state.visited : state.favs;
   set.has(id) ? set.delete(id) : set.add(id);
@@ -380,6 +443,7 @@ $('#sheet-body').addEventListener('click', (e) => {
 window.addEventListener('popstate', () => {
   const m = location.hash.match(/^#p(\d+)$/);
   if (m) selectPlace(+m[1], { push: false });
+  else if (location.hash === '#hotel') openHotel();
   else closeSheet('sheet', true);
 });
 
@@ -399,7 +463,7 @@ $('#btn-list').onclick = openList;
 $('#sort').addEventListener('click', (e) => {
   const b = e.target.closest('button');
   if (!b) return;
-  if (b.dataset.sort === 'dist' && !state.me) { locate(true); toast('Определяю местоположение…'); }
+  if (b.dataset.sort === 'dist' && !state.me) { locate(true); toast('Пока считаю от отеля, определяю где вы…'); }
   state.sort = b.dataset.sort;
   LS.set('sort', state.sort);
   renderList();
@@ -408,7 +472,8 @@ $('#sort').addEventListener('click', (e) => {
 function renderList() {
   [...$('#sort').children].forEach((b) => b.classList.toggle('on', b.dataset.sort === state.sort));
   let arr = visiblePlaces();
-  if (state.sort === 'dist' && state.me) arr.sort((a, b) => distKm(state.me, [a.lat, a.lng]) - distKm(state.me, [b.lat, b.lng]));
+  const o = origin();
+  if (state.sort === 'dist') arr.sort((a, b) => distKm(o.at, [a.lat, a.lng]) - distKm(o.at, [b.lat, b.lng]));
   else if (state.sort === 'num') arr.sort((a, b) => a.id - b.id);
   else arr.sort((a, b) => (a.priority - b.priority) || ((b.crowd?.level || 0) - (a.crowd?.level || 0)) || a.id - b.id);
   $('#list-title').textContent = state.q ? `Найдено: ${arr.length}` : `Места · ${arr.length}`;
@@ -419,7 +484,7 @@ function renderList() {
     const th = p.photos?.[0]
       ? `<img class="th" src="${esc(p.photos[0].thumb || p.photos[0].src)}" alt="" loading="lazy">`
       : `<div class="th ph" style="background:${cat.color}">${p.id}</div>`;
-    const d = state.me ? `<span>📍 ${fmtDist(distKm(state.me, [p.lat, p.lng]))}</span>` : '';
+    const d = `<span>${state.me ? '📍' : '🏨'} ${fmtDist(distKm(o.at, [p.lat, p.lng]))}</span>`;
     return `<button class="row${state.visited.has(p.id) ? ' visited' : ''}" data-id="${p.id}">${th}<div>
       <div class="nm">${p.priority === 1 ? '★ ' : ''}${esc(p.name_ru)} <small>#${p.id}</small>${state.favs.has(p.id) ? ' <span style="color:#e0365a">♥</span>' : ''}${state.visited.has(p.id) ? ' ✓' : ''}</div>
       <div class="sh">${esc(p.short)}</div>
@@ -556,6 +621,7 @@ async function boot() {
   applyFilter();
   const h = location.hash.match(/^#p(\d+)$/);
   if (h) selectPlace(+h[1], { push: false });
+  else if (location.hash === '#hotel') openHotel();
   // refresh "open now" badges every minute
   setInterval(() => { if ($('#list').classList.contains('open')) renderList(); }, 60000);
 }

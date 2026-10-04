@@ -146,6 +146,26 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 .hide-labels .leaflet-tooltip.lbl { display: none; }
 .hide-labels-minor .leaflet-tooltip.lbl.minor { display: none; }
 
+.hotel-pin {
+  width: 38px; height: 38px; border-radius: 12px; background: #1f1d1a; color: #fff;
+  border: 3px solid #fff; box-shadow: 0 0 0 3px #c8402a, 0 3px 10px rgba(0,0,0,.45);
+  display: grid; place-items: center;
+}
+.hotel-pin svg { width: 20px; height: 20px; }
+.leaflet-tooltip.hotel-lbl { font-size: 12.5px; font-weight: 800; color: #c8402a; }
+.hide-labels .leaflet-tooltip.hotel-lbl { display: block; }
+.fab-hotel { color: var(--accent); }
+.hotel-num { background: #1f1d1a; color: #fff; }
+.hotel-num svg { width: 18px; height: 18px; }
+@media (prefers-color-scheme: dark) { .hotel-num { background: #f2ede4; color: #1f1d1a; } }
+.taxi {
+  margin: 14px 0 0; padding: 14px; border-radius: 14px; background: var(--surface-2); text-align: center;
+}
+.taxi b { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--ink-3); margin-bottom: 6px; }
+.taxi-name { font-size: 22px; font-weight: 700; line-height: 1.3; }
+.taxi-addr { font-size: 19px; line-height: 1.4; margin-top: 4px; }
+.taxi-tel { font-size: 15px; color: var(--ink-2); margin-top: 6px; }
+
 .me-dot {
   width: 18px; height: 18px; border-radius: 50%; background: #2a7cf0; border: 3px solid #fff;
   box-shadow: 0 0 0 6px rgba(42,124,240,.25), 0 1px 4px rgba(0,0,0,.4);

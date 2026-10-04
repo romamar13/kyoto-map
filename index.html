@@ -15,7 +15,7 @@
   <link rel="icon" href="icons/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
   <div id="map" aria-label="Карта Киото"></div>
@@ -34,6 +34,9 @@
   </header>
 
   <div class="fabs">
+    <button class="fab fab-hotel" id="btn-hotel" aria-label="Наш отель">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.6"/></svg>
+    </button>
     <button class="fab" id="btn-locate" aria-label="Где я">
       <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="7.5"/></svg>
     </button>
@@ -80,6 +83,6 @@
   <div class="toast" id="toast"></div>
 
   <script src="vendor/leaflet.js"></script>
-  <script src="app.js?v=5"></script>
+  <script src="app.js?v=6"></script>
 </body>
 </html>

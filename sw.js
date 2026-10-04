@@ -1,5 +1,5 @@
 // Bump VERSION when app files or data change.
-const VERSION = 'v1';
+const VERSION = 'v2';
 const SHELL = `kyoto-shell-${VERSION}`;
 const RUNTIME = 'kyoto-runtime';
 const SHELL_FILES = [
