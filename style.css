@@ -167,8 +167,13 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
 .taxi-tel { font-size: 15px; color: var(--ink-2); margin-top: 6px; }
 
 .me-dot {
-  width: 18px; height: 18px; border-radius: 50%; background: #2a7cf0; border: 3px solid #fff;
+  width: 22px; height: 22px; border-radius: 50%; background: #2a7cf0; border: 3px solid #fff;
   box-shadow: 0 0 0 6px rgba(42,124,240,.25), 0 1px 4px rgba(0,0,0,.4);
+  animation: me-pulse 2s ease-out infinite;
+}
+@keyframes me-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(42,124,240,.55), 0 1px 4px rgba(0,0,0,.4); }
+  100% { box-shadow: 0 0 0 16px rgba(42,124,240,0), 0 1px 4px rgba(0,0,0,.4); }
 }
 
 /* ---------- sheets ---------- */

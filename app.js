@@ -25,12 +25,15 @@ const HOTEL = {
   phone: '075-741-7891',
   station: 'Метро «Сидзё» (линия Карасума) или Hankyu «Карасума» — 6 мин пешком; станции соединены под землёй',
 };
+// SVG strokes can't use CSS variables, so polylines get plain hex colours
+const LINE_COLORS = { street: '#e0901a', market: '#e0901a', nature: '#2f9a5a', garden: '#2f9a5a', other: '#6b7a8c', museum: '#6b7a8c', temple: '#3b5ba5', shrine: '#d24a2c', castle: '#7a4fa0' };
 const CROWD_TXT = ['', 'почти пусто', 'спокойно', 'умеренно', 'людно', 'очень людно'];
 
 const state = {
   places: [],
   byId: new Map(),
   markers: new Map(),
+  lines: new Map(), // id -> layer group with street/path polylines
   visited: new Set(LS.get('visited', [])),
   favs: new Set(LS.get('favs', [])),
   filter: LS.get('filter', { cat: 'all', must: false, unesco: false, fav: false, hideVisited: false }),
@@ -186,6 +189,9 @@ function applyFilter() {
     const on = vis.has(id) || state.selected === id;
     if (on && !map.hasLayer(m)) m.addTo(map);
     if (!on && map.hasLayer(m)) m.remove();
+    const ln = state.lines.get(id);
+    if (ln && on && !map.hasLayer(ln)) ln.addTo(map);
+    if (ln && !on && map.hasLayer(ln)) ln.remove();
   }
   $('#count').textContent = `Список · ${vis.size}`;
   if ($('#list').classList.contains('open')) renderList();
@@ -498,15 +504,22 @@ $('#list-body').addEventListener('click', (e) => {
 });
 
 /* ---------------- geolocation ---------------- */
-let meMarker, watchId;
+let meMarker, meCircle, watchId;
 function locate(silent) {
   if (!navigator.geolocation) return toast('Геолокация недоступна');
   if (watchId != null && state.me) { map.flyTo(state.me, Math.max(map.getZoom(), 15)); return; }
   let first = true;
   watchId = navigator.geolocation.watchPosition((pos) => {
     state.me = [pos.coords.latitude, pos.coords.longitude];
-    if (!meMarker) meMarker = L.marker(state.me, { icon: L.divIcon({ className: '', html: '<div class="me-dot"></div>', iconSize: [18, 18] }), interactive: false, zIndexOffset: 1000 }).addTo(map);
-    else meMarker.setLatLng(state.me);
+    const acc = Math.min(pos.coords.accuracy || 0, 1000);
+    if (!meMarker) {
+      meCircle = L.circle(state.me, { radius: acc, color: '#2a7cf0', weight: 1, opacity: 0.5, fillOpacity: 0.12, interactive: false }).addTo(map);
+      meMarker = L.marker(state.me, { icon: L.divIcon({ className: '', html: '<div class="me-dot"></div>', iconSize: [22, 22] }), interactive: false, zIndexOffset: 4000 }).addTo(map);
+    } else {
+      meMarker.setLatLng(state.me);
+      meCircle.setLatLng(state.me).setRadius(acc);
+    }
+    LS.set('geo', true);
     $('#btn-locate').classList.add('active');
     if (first) {
       first = false;
@@ -514,11 +527,33 @@ function locate(silent) {
       if ($('#list').classList.contains('open')) renderList();
     }
   }, (err) => {
-    toast(err.code === 1 ? 'Нет доступа к геолокации' : 'Не удалось определить местоположение');
+    if (!silent) toast(err.code === 1 ? 'Нет доступа к геолокации — разрешите в Настройках → Safari/Конфиденциальность' : 'Не удалось определить местоположение');
+    if (err.code === 1) LS.set('geo', false);
+    if (watchId != null) navigator.geolocation.clearWatch(watchId);
     watchId = null;
   }, { enableHighAccuracy: true, maximumAge: 15000, timeout: 20000 });
 }
 $('#btn-locate').onclick = () => locate(false);
+
+// Show my position automatically once location was allowed before.
+async function autoLocate() {
+  let granted = LS.get('geo', false);
+  try {
+    const st = await navigator.permissions?.query({ name: 'geolocation' });
+    if (st?.state === 'granted') granted = true;
+    if (st?.state === 'denied') granted = false;
+  } catch {}
+  if (granted) locate(true);
+}
+autoLocate();
+// iOS pauses the watch in background; restart it when the app comes back
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible' && LS.get('geo', false)) {
+    if (watchId != null) navigator.geolocation.clearWatch(watchId);
+    watchId = null;
+    locate(true);
+  }
+});
 
 /* ---------------- menu ---------------- */
 $('#btn-menu').onclick = () => { renderMenu(); openSheet('menu'); };
@@ -617,6 +652,16 @@ async function boot() {
     m.bindTooltip(p.name_ru, { permanent: true, direction: 'bottom', className: 'lbl' + (p.priority === 1 ? '' : ' minor'), offset: [0, 2] });
     m.on('click', () => selectPlace(p.id, { fly: false }));
     state.markers.set(p.id, m);
+    if (p.line) {
+      // streets, paths and bridges are drawn along their real geometry
+      const color = LINE_COLORS[p.category] || LINE_COLORS.other;
+      const g = L.layerGroup([
+        L.polyline(p.line, { color: '#fff', weight: 11, opacity: 0.85, lineCap: 'round', lineJoin: 'round', interactive: false }),
+        L.polyline(p.line, { color, weight: 6, opacity: 0.95, lineCap: 'round', lineJoin: 'round' }),
+      ]);
+      g.eachLayer((l) => l.on('click', (e) => { L.DomEvent.stop(e); selectPlace(p.id, { fly: false }); }));
+      state.lines.set(p.id, g);
+    }
   }
   applyFilter();
   const h = location.hash.match(/^#p(\d+)$/);

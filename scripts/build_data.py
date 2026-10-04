@@ -23,9 +23,12 @@ def km(a, b):
 
 places = sorted([p for f in glob.glob('data/parts/*.json') for p in json.load(open(f))], key=lambda p: p['id'])
 photos = json.load(open('data/photo_cache.json'))
+lines = json.load(open('data/lines.json')) if os.path.exists('data/lines.json') else {}
 wc = json.load(open('data/wiki_coords.json')) if os.path.exists('data/wiki_coords.json') else {}
 for p in places:
     p['photos'] = [{k: v for k, v in ph.items() if k != 'title'} for ph in photos.get(str(p['id']), [])]
+    if lines.get(str(p['id'])):
+        p['line'] = lines[str(p['id'])]
     if p['id'] in GMAPS:
         p['gmaps_query'] = GMAPS[p['id']]
     w = wc.get(str(p['id']))
