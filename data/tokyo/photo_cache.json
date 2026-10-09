@@ -11,27 +11,44 @@
    "thumb": "photos/tokyo/1-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Asakusa_during_snowfall_-_Flickr_-_Manish_Prabhune.jpg",
    "credit": "Manish Prabhune from 東京, 日本, CC BY 2.0"
-  },
-  {
-   "src": "photos/tokyo/1-3.jpg",
-   "thumb": "photos/tokyo/1-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bosatsu_Kannon_from_Simida_River_01.JPG",
-   "credit": "Biliana Nikolova-Lefterova, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/1-4.jpg",
-   "thumb": "photos/tokyo/1-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bosatsu_Kannon_from_Simida_River_02.JPG",
-   "credit": "Biliana Nikolova-Lefterova, CC BY-SA 4.0"
   }
  ],
- "2": [],
+ "2": [
+  {
+   "src": "photos/tokyo/2-1.jpg",
+   "thumb": "photos/tokyo/2-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:06_Nakamise-dori,_Asakusa_(T%C3%B2quio),_aparador_de_nines.jpg",
+   "credit": "GuillemMedina, CC BY-SA 4.0",
+   "title": "File:06 Nakamise-dori, Asakusa (Tòquio), aparador de nines.jpg"
+  },
+  {
+   "src": "photos/tokyo/2-2.jpg",
+   "thumb": "photos/tokyo/2-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Nakamise-dori_Street.jpg",
+   "credit": "Alexeyevitch, CC BY-SA 4.0",
+   "title": "File:Nakamise-dori Street.jpg"
+  },
+  {
+   "src": "photos/tokyo/2-3.jpg",
+   "thumb": "photos/tokyo/2-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Nakamise-D%C5%8Dri,_Asakusa_(9409495501).jpg",
+   "credit": "Maarten Heerlien from Voorschoten, The Netherlands, CC BY 2.0",
+   "title": "File:Nakamise-Dōri, Asakusa (9409495501).jpg"
+  }
+ ],
  "3": [
   {
    "src": "photos/tokyo/3-1.jpg",
    "thumb": "photos/tokyo/3-1-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kappabashi-dori_streetcorner_(Kitchen_town_-_southern_end)_Tokyo_Japan.jpg",
    "credit": "Basile Morin, CC BY-SA 4.0"
+  },
+  {
+   "src": "photos/tokyo/3-2.jpg",
+   "thumb": "photos/tokyo/3-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Cream_and_red_coffee_cup-shaped_balconies,_Niimi_Tableware,_Kappabashi_Dougu_Street,_Tokyo,_Japan.jpg",
+   "credit": "Basile Morin, CC BY-SA 4.0",
+   "title": "File:Cream and red coffee cup-shaped balconies, Niimi Tableware, Kappabashi Dougu Street, Tokyo, Japan.jpg"
   }
  ],
  "4": [
@@ -66,6 +83,27 @@
    "thumb": "photos/tokyo/5-1-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:2018_Sumida_Hokusai_Museum_2.jpg",
    "credit": "Kakidai, CC BY-SA 4.0"
+  },
+  {
+   "src": "photos/tokyo/5-2.jpg",
+   "thumb": "photos/tokyo/5-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2018_Sumida_Hokusai_Museum_5.jpg",
+   "credit": "Kakidai, CC BY-SA 4.0",
+   "title": "File:2018 Sumida Hokusai Museum 5.jpg"
+  },
+  {
+   "src": "photos/tokyo/5-3.jpg",
+   "thumb": "photos/tokyo/5-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2018_Sumida_Hokusai_Museum_3.jpg",
+   "credit": "Kakidai, CC BY-SA 4.0",
+   "title": "File:2018 Sumida Hokusai Museum 3.jpg"
+  },
+  {
+   "src": "photos/tokyo/5-4.jpg",
+   "thumb": "photos/tokyo/5-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:2018_Sumida_Hokusai_Museum_1.jpg",
+   "credit": "Kakidai, CC BY-SA 4.0",
+   "title": "File:2018 Sumida Hokusai Museum 1.jpg"
   }
  ],
  "6": [
@@ -78,18 +116,6 @@
   {
    "src": "photos/tokyo/6-2.jpg",
    "thumb": "photos/tokyo/6-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bomb_damage_in_Tokyo.jpg",
-   "credit": "US Army Signal Corps, Public domain"
-  },
-  {
-   "src": "photos/tokyo/6-3.jpg",
-   "thumb": "photos/tokyo/6-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Electric-scoreboard_at_Ryogoku_Kokugikan.jpg",
-   "credit": "PekePON, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/6-4.jpg",
-   "thumb": "photos/tokyo/6-4-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Inari_Shrines_Kokugikan.jpg",
    "credit": "kobakou, CC BY 2.0"
   }
@@ -104,18 +130,12 @@
   {
    "src": "photos/tokyo/7-2.jpg",
    "thumb": "photos/tokyo/7-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:100_views_edo_011.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
-  },
-  {
-   "src": "photos/tokyo/7-3.jpg",
-   "thumb": "photos/tokyo/7-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Five-storied_Pagoda_-_Kan%27ei-ji.jpg",
    "credit": "Kakidai, CC BY-SA 4.0"
   },
   {
-   "src": "photos/tokyo/7-4.jpg",
-   "thumb": "photos/tokyo/7-4-t.jpg",
+   "src": "photos/tokyo/7-3.jpg",
+   "thumb": "photos/tokyo/7-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Front_Gate_of_Inshu_Ikeda%27s_Residence,_Tokyo.JPG",
    "credit": "Kakidai, CC BY-SA 3.0"
   }
@@ -172,7 +192,36 @@
    "credit": "Dick Thomas Johnson from Tokyo, Japan, CC BY 2.0"
   }
  ],
- "10": [],
+ "10": [
+  {
+   "src": "photos/tokyo/10-1.jpg",
+   "thumb": "photos/tokyo/10-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_2.jpg",
+   "credit": "Christophe95, CC BY-SA 4.0",
+   "title": "File:Yanaka Ginza 2.jpg"
+  },
+  {
+   "src": "photos/tokyo/10-2.jpg",
+   "thumb": "photos/tokyo/10-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza,_Yanaka_(53417016334).jpg",
+   "credit": "Stephen Kelly from San Francisco, CA, USA, CC BY 2.0",
+   "title": "File:Yanaka Ginza, Yanaka (53417016334).jpg"
+  },
+  {
+   "src": "photos/tokyo/10-3.jpg",
+   "thumb": "photos/tokyo/10-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_(52493036385).jpg",
+   "credit": "Dick Thomas Johnson from Tokyo, Japan, CC BY 2.0",
+   "title": "File:Yanaka Ginza (52493036385).jpg"
+  },
+  {
+   "src": "photos/tokyo/10-4.jpg",
+   "thumb": "photos/tokyo/10-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Yanaka_Ginza_entrance.jpg",
+   "credit": "1904.CC, CC BY 4.0",
+   "title": "File:Yanaka Ginza entrance.jpg"
+  }
+ ],
  "11": [
   {
    "src": "photos/tokyo/11-1.jpg",
@@ -235,23 +284,46 @@
   {
    "src": "photos/tokyo/13-2.jpg",
    "thumb": "photos/tokyo/13-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:100_views_edo_010.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
-  },
-  {
-   "src": "photos/tokyo/13-3.jpg",
-   "thumb": "photos/tokyo/13-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kanda-Myojin_torii.JPG",
    "credit": "Kakidai, CC BY-SA 3.0"
   },
   {
-   "src": "photos/tokyo/13-4.jpg",
-   "thumb": "photos/tokyo/13-4-t.jpg",
+   "src": "photos/tokyo/13-3.jpg",
+   "thumb": "photos/tokyo/13-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:KandaMyojin8816.jpg",
    "credit": "No machine-readable author provided. Fg2 assumed (based on c, Public domain"
   }
  ],
- "14": [],
+ "14": [
+  {
+   "src": "photos/tokyo/14-1.jpg",
+   "thumb": "photos/tokyo/14-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jimb%C5%8Dch%C5%8D_Book_Town_2025_02.jpg",
+   "credit": "Olaf2, CC BY-SA 4.0",
+   "title": "File:Jimbōchō Book Town 2025 02.jpg"
+  },
+  {
+   "src": "photos/tokyo/14-2.jpg",
+   "thumb": "photos/tokyo/14-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jimb%C5%8Dch%C5%8D_Book_Town_2025_01.jpg",
+   "credit": "Olaf2, CC BY-SA 4.0",
+   "title": "File:Jimbōchō Book Town 2025 01.jpg"
+  },
+  {
+   "src": "photos/tokyo/14-3.jpg",
+   "thumb": "photos/tokyo/14-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Used_bookstore_in_Jimbocho_(50495926321).jpg",
+   "credit": "Real Estate Japan from Tokyo, Japan, CC BY 2.0",
+   "title": "File:Used bookstore in Jimbocho (50495926321).jpg"
+  },
+  {
+   "src": "photos/tokyo/14-4.jpg",
+   "thumb": "photos/tokyo/14-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Bookshop_in_Kanda-Jimbocho_area_of_Tokyo.JPG",
+   "credit": "Nick-D, CC BY-SA 3.0",
+   "title": "File:Bookshop in Kanda-Jimbocho area of Tokyo.JPG"
+  }
+ ],
  "15": [
   {
    "src": "photos/tokyo/15-1.jpg",
@@ -262,18 +334,12 @@
   {
    "src": "photos/tokyo/15-2.jpg",
    "thumb": "photos/tokyo/15-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:100_views_edo_117.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
-  },
-  {
-   "src": "photos/tokyo/15-3.jpg",
-   "thumb": "photos/tokyo/15-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Reitaisai_-Yushima_07.jpg",
    "credit": "Marufish, CC BY-SA 2.0"
   },
   {
-   "src": "photos/tokyo/15-4.jpg",
-   "thumb": "photos/tokyo/15-4-t.jpg",
+   "src": "photos/tokyo/15-3.jpg",
+   "thumb": "photos/tokyo/15-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Yushima_tenmangu_ema.jpg",
    "credit": "Ph0kin, Public domain"
   }
@@ -321,42 +387,11 @@
   {
    "src": "photos/tokyo/18-3.jpg",
    "thumb": "photos/tokyo/18-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Honmaru_and_Ninomaru_Palaces,_Edo_Castle,_in_the_last_years_of_the_Tokugawa_Shogunate,_model_scale_1_over_200_-_Edo-Tokyo_Museum_-_Sumida,_Tokyo,_Japan_-_DSC06586.jpg",
-   "credit": "Daderot, CC0"
-  },
-  {
-   "src": "photos/tokyo/18-4.jpg",
-   "thumb": "photos/tokyo/18-4-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kokyo0097.jpg",
    "credit": "No machine-readable author provided. Fg2 assumed (based on c, Public domain"
   }
  ],
- "19": [
-  {
-   "src": "photos/tokyo/19-1.jpg",
-   "thumb": "photos/tokyo/19-1-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Edo_P_detail.jpg",
-   "credit": "Unknown authorUnknown author, Public domain"
-  },
-  {
-   "src": "photos/tokyo/19-2.jpg",
-   "thumb": "photos/tokyo/19-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bjh36_Yedo_TycoonPalace.jpg",
-   "credit": "Felice Beato, Public domain"
-  },
-  {
-   "src": "photos/tokyo/19-3.jpg",
-   "thumb": "photos/tokyo/19-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bjh36_Yedo_TycoonPalace_doublebridge.jpg",
-   "credit": "Felice Beato, Public domain"
-  },
-  {
-   "src": "photos/tokyo/19-4.jpg",
-   "thumb": "photos/tokyo/19-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bjh37_Yedo_castlemoat.jpg",
-   "credit": "Felice Beato, Public domain"
-  }
- ],
+ "19": [],
  "20": [
   {
    "src": "photos/tokyo/20-1.jpg",
@@ -369,18 +404,6 @@
    "thumb": "photos/tokyo/20-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:JNR_EF66_019.JPG",
    "credit": "Tennen-Gas, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/20-3.jpg",
-   "thumb": "photos/tokyo/20-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:JR-Central-East-Tokyo-STA_Shinkansen-North-transfer-Gate.jpg",
-   "credit": "MaedaAkihiko, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/20-4.jpg",
-   "thumb": "photos/tokyo/20-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:JR-Central-Tokyo-STA_Central-transfer-Gate.jpg",
-   "credit": "MaedaAkihiko, CC BY-SA 4.0"
   }
  ],
  "21": [
@@ -401,12 +424,6 @@
    "thumb": "photos/tokyo/21-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Ginza_Six_02.jpg",
    "credit": "ITA-ATU, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/21-4.jpg",
-   "thumb": "photos/tokyo/21-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Ginza_Street_in1936.jpg",
-   "credit": "Unknown authorUnknown author, Public domain"
   }
  ],
  "22": [
@@ -419,18 +436,12 @@
   {
    "src": "photos/tokyo/22-2.jpg",
    "thumb": "photos/tokyo/22-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Eka1005.jpg",
-   "credit": "Kinouya, Public domain"
-  },
-  {
-   "src": "photos/tokyo/22-3.jpg",
-   "thumb": "photos/tokyo/22-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Eka1022.jpg",
    "credit": "CC BY-SA 3.0"
   },
   {
-   "src": "photos/tokyo/22-4.jpg",
-   "thumb": "photos/tokyo/22-4-t.jpg",
+   "src": "photos/tokyo/22-3.jpg",
+   "thumb": "photos/tokyo/22-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kabuki-za_Theatre_2010_0430.JPG",
    "credit": "Tak1701d, Public domain"
   }
@@ -439,24 +450,18 @@
   {
    "src": "photos/tokyo/23-1.jpg",
    "thumb": "photos/tokyo/23-1-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:2018_Tsukiji_fish_market.jpg",
-   "credit": "Kakidai, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/23-2.jpg",
-   "thumb": "photos/tokyo/23-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:A_selection_of_kamatoro_and_otoro_nigiri_at_Tsukiji_fish_market_in_Tokyo,_Japan_in_July_2026.jpg",
    "credit": "Gatorfan252525, CC BY-SA 4.0"
   },
   {
-   "src": "photos/tokyo/23-3.jpg",
-   "thumb": "photos/tokyo/23-3-t.jpg",
+   "src": "photos/tokyo/23-2.jpg",
+   "thumb": "photos/tokyo/23-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Auction_Tsukiji_fishmarket.jpg",
    "credit": "Chris 73, CC BY-SA 3.0"
   },
   {
-   "src": "photos/tokyo/23-4.jpg",
-   "thumb": "photos/tokyo/23-4-t.jpg",
+   "src": "photos/tokyo/23-3.jpg",
+   "thumb": "photos/tokyo/23-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Crowds_of_Nishiki_Market_(27816395458).jpg",
    "credit": "Ajay Suresh from New York, NY, USA, CC BY 2.0"
   }
@@ -473,42 +478,18 @@
    "thumb": "photos/tokyo/24-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Fish_Packed_in_Ice.jpg",
    "credit": "Lotus Head from Johannesburg, Gauteng, South Africa, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/24-3.jpg",
-   "thumb": "photos/tokyo/24-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Q11633916.jpg",
-   "credit": "Syced, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/24-4.jpg",
-   "thumb": "photos/tokyo/24-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:RV_Celtic_Explorer,_Galway_Bay,_Ireland.jpg",
-   "credit": "Anilocra at English Wikipedia, Public domain"
   }
  ],
  "25": [
   {
    "src": "photos/tokyo/25-1.jpg",
    "thumb": "photos/tokyo/25-1-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hamarikyu_Garden_as_seen_from_Shiodome.jpg",
-   "credit": "CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/25-2.jpg",
-   "thumb": "photos/tokyo/25-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:2018_Hama-riky%C5%AB_Garden_02.jpg",
    "credit": "Kakidai, CC BY-SA 4.0"
   },
   {
-   "src": "photos/tokyo/25-3.jpg",
-   "thumb": "photos/tokyo/25-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bjh42_Yedo_TycoonGarden.jpg",
-   "credit": "Felice Beato, Public domain"
-  },
-  {
-   "src": "photos/tokyo/25-4.jpg",
-   "thumb": "photos/tokyo/25-4-t.jpg",
+   "src": "photos/tokyo/25-2.jpg",
+   "thumb": "photos/tokyo/25-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Bridge_across_Shioiri-no-ike_Pond_in_Hamarikyu_Gardens.jpg",
    "credit": "Gatorfan252525, CC BY-SA 4.0"
   }
@@ -531,12 +512,6 @@
    "thumb": "photos/tokyo/26-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Bank_of_Japan_2010.jpg",
    "credit": "Wiiii, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/26-4.jpg",
-   "thumb": "photos/tokyo/26-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hiroshige_le_pont_Nihonbashi_%C3%A0_l%27aube.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
   }
  ],
  "27": [
@@ -575,18 +550,6 @@
   {
    "src": "photos/tokyo/28-2.jpg",
    "thumb": "photos/tokyo/28-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:100_views_edo_049.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
-  },
-  {
-   "src": "photos/tokyo/28-3.jpg",
-   "thumb": "photos/tokyo/28-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:100_views_edo_079.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
-  },
-  {
-   "src": "photos/tokyo/28-4.jpg",
-   "thumb": "photos/tokyo/28-4-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:20110405-TokyoTower-Sakura01.jpg",
    "credit": "東京太郎, CC BY-SA 3.0"
   }
@@ -643,7 +606,36 @@
    "credit": "Fotointheworld, CC BY 4.0"
   }
  ],
- "31": [],
+ "31": [
+  {
+   "src": "photos/tokyo/31-1.jpg",
+   "thumb": "photos/tokyo/31-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Teamlab_toyosu.jpg",
+   "credit": "Syced, CC0",
+   "title": "File:Teamlab toyosu.jpg"
+  },
+  {
+   "src": "photos/tokyo/31-2.jpg",
+   "thumb": "photos/tokyo/31-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Japan_2024-04-28_(53893216325).jpg",
+   "credit": "Maarten Heerlien from Voorschoten, The Netherlands, CC BY 2.0",
+   "title": "File:Japan 2024-04-28 (53893216325).jpg"
+  },
+  {
+   "src": "photos/tokyo/31-3.jpg",
+   "thumb": "photos/tokyo/31-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Japan_2024-04-28_(53891884372).jpg",
+   "credit": "Maarten Heerlien from Voorschoten, The Netherlands, CC BY 2.0",
+   "title": "File:Japan 2024-04-28 (53891884372).jpg"
+  },
+  {
+   "src": "photos/tokyo/31-4.jpg",
+   "thumb": "photos/tokyo/31-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Japan_2024-04-28_(53893216070).jpg",
+   "credit": "Maarten Heerlien from Voorschoten, The Netherlands, CC BY 2.0",
+   "title": "File:Japan 2024-04-28 (53893216070).jpg"
+  }
+ ],
  "32": [
   {
    "src": "photos/tokyo/32-1.jpg",
@@ -706,18 +698,12 @@
   {
    "src": "photos/tokyo/34-2.jpg",
    "thumb": "photos/tokyo/34-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Fukagawa_hachimang%C5%AB_keidai.jpg",
-   "credit": "Utagawa, Kuniteru, Public domain"
-  },
-  {
-   "src": "photos/tokyo/34-3.jpg",
-   "thumb": "photos/tokyo/34-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Tomioka_Hachimangu_in_Monzen-Nakacho.jpg",
    "credit": "Manish Prabhune, CC BY 2.0"
   },
   {
-   "src": "photos/tokyo/34-4.jpg",
-   "thumb": "photos/tokyo/34-4-t.jpg",
+   "src": "photos/tokyo/34-3.jpg",
+   "thumb": "photos/tokyo/34-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Tomioka_hachimangu10.jpg",
    "credit": "江戸村のとくぞう (Edomura no Tokuzo), CC BY-SA 4.0"
   }
@@ -790,17 +776,40 @@
   {
    "src": "photos/tokyo/37-3.jpg",
    "thumb": "photos/tokyo/37-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Jingu_gaien_air.jpg",
-   "credit": "Attribution"
-  },
-  {
-   "src": "photos/tokyo/37-4.jpg",
-   "thumb": "photos/tokyo/37-4-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kisenosato_Yutaka1.jpg",
    "credit": "Tokuzo in Edomura, CC BY-SA 4.0"
   }
  ],
- "38": [],
+ "38": [
+  {
+   "src": "photos/tokyo/38-1.jpg",
+   "thumb": "photos/tokyo/38-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Marion_Cr%C3%AApes_in_Harajuku_Takeshita_2.jpg",
+   "credit": "Syced, CC0",
+   "title": "File:Marion Crêpes in Harajuku Takeshita 2.jpg"
+  },
+  {
+   "src": "photos/tokyo/38-2.jpg",
+   "thumb": "photos/tokyo/38-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Takeshita_Street.jpg",
+   "credit": "Syced, CC0",
+   "title": "File:Takeshita Street.jpg"
+  },
+  {
+   "src": "photos/tokyo/38-3.jpg",
+   "thumb": "photos/tokyo/38-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Marion_Cr%C3%AApes_in_Harajuku_Takeshita.jpg",
+   "credit": "Syced, CC0",
+   "title": "File:Marion Crêpes in Harajuku Takeshita.jpg"
+  },
+  {
+   "src": "photos/tokyo/38-4.jpg",
+   "thumb": "photos/tokyo/38-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Cr%C3%AApes_-_Takeshita_street_-_Tokyo_-_DSC07885.JPG",
+   "credit": "Daderot, CC0",
+   "title": "File:Crêpes - Takeshita street - Tokyo - DSC07885.JPG"
+  }
+ ],
  "39": [
   {
    "src": "photos/tokyo/39-1.jpg",
@@ -827,18 +836,6 @@
    "thumb": "photos/tokyo/40-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:KORIN-Irises-L.jpg",
    "credit": "Ogata Korin, died 1716, Public domain"
-  },
-  {
-   "src": "photos/tokyo/40-3.jpg",
-   "thumb": "photos/tokyo/40-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:KORIN-Irises-R.jpg",
-   "credit": "Ogata Korin, died 1716, Public domain"
-  },
-  {
-   "src": "photos/tokyo/40-4.jpg",
-   "thumb": "photos/tokyo/40-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:NEZU_Kaichiro_I.jpg",
-   "credit": "Unknown authorUnknown author, Public domain"
   }
  ],
  "41": [
@@ -881,7 +878,36 @@
    "credit": "Wpcpey, CC BY 4.0"
   }
  ],
- "43": [],
+ "43": [
+  {
+   "src": "photos/tokyo/43-1.jpg",
+   "thumb": "photos/tokyo/43-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Shibuya_109_-_3.jpg",
+   "credit": "Kakidai, CC BY-SA 4.0",
+   "title": "File:Shibuya 109 - 3.jpg"
+  },
+  {
+   "src": "photos/tokyo/43-2.jpg",
+   "thumb": "photos/tokyo/43-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jpn_shibuya_109.jpg",
+   "credit": "tacranke, Public domain",
+   "title": "File:Jpn shibuya 109.jpg"
+  },
+  {
+   "src": "photos/tokyo/43-3.jpg",
+   "thumb": "photos/tokyo/43-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Shibuya_109.jpg",
+   "credit": "Edgar Augusto, CC BY-SA 3.0",
+   "title": "File:Shibuya 109.jpg"
+  },
+  {
+   "src": "photos/tokyo/43-4.jpg",
+   "thumb": "photos/tokyo/43-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Shibuya_109_-_1.jpg",
+   "credit": "Kakidai, CC BY-SA 4.0",
+   "title": "File:Shibuya 109 - 1.jpg"
+  }
+ ],
  "44": [
   {
    "src": "photos/tokyo/44-1.jpg",
@@ -966,15 +992,31 @@
    "thumb": "photos/tokyo/47-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Tokyo_Metropolitan_Government_Building_No.2_2009.jpg",
    "credit": "Wiiii, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/47-4.jpg",
-   "thumb": "photos/tokyo/47-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Tokyo_Metropolitan_Government_Building_circa_1960.jpg",
-   "credit": "Unknown authorUnknown author, Public domain"
   }
  ],
- "48": [],
+ "48": [
+  {
+   "src": "photos/tokyo/48-1.jpg",
+   "thumb": "photos/tokyo/48-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Shinjuku-West_Omoide-Yokocho.jpg",
+   "credit": "MaedaAkihiko, CC BY-SA 4.0",
+   "title": "File:Shinjuku-West Omoide-Yokocho.jpg"
+  },
+  {
+   "src": "photos/tokyo/48-2.jpg",
+   "thumb": "photos/tokyo/48-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Entrance_to_Omoide_Yokocho.jpg",
+   "credit": "Grendelkhan, CC BY-SA 4.0",
+   "title": "File:Entrance to Omoide Yokocho.jpg"
+  },
+  {
+   "src": "photos/tokyo/48-3.jpg",
+   "thumb": "photos/tokyo/48-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Omoide_Yokocho_(53136555278).jpg",
+   "credit": "Dick Thomas Johnson from Tokyo, Japan, CC BY 2.0",
+   "title": "File:Omoide Yokocho (53136555278).jpg"
+  }
+ ],
  "49": [
   {
    "src": "photos/tokyo/49-1.jpg",
@@ -1067,7 +1109,36 @@
    "credit": "Fotointheworld, CC BY 4.0"
   }
  ],
- "53": [],
+ "53": [
+  {
+   "src": "photos/tokyo/53-1.jpg",
+   "thumb": "photos/tokyo/53-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ikebukuro_station_@_Sunshine_60_Observatory_@_Sunshine_City_@_Ikebukuro_(9350794957).jpg",
+   "credit": "Guilhem Vellut from Annecy, France, CC BY 2.0",
+   "title": "File:Ikebukuro station @ Sunshine 60 Observatory @ Sunshine City @ Ikebukuro (9350794957).jpg"
+  },
+  {
+   "src": "photos/tokyo/53-2.jpg",
+   "thumb": "photos/tokyo/53-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sunshine_60_Ikebukuro_Tokyo_20070304-06.jpg",
+   "credit": "Kure, CC BY-SA 2.5",
+   "title": "File:Sunshine 60 Ikebukuro Tokyo 20070304-06.jpg"
+  },
+  {
+   "src": "photos/tokyo/53-3.jpg",
+   "thumb": "photos/tokyo/53-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sunshine_City_Tokyo.jpg",
+   "credit": "Maplestrip, CC BY 3.0",
+   "title": "File:Sunshine City Tokyo.jpg"
+  },
+  {
+   "src": "photos/tokyo/53-4.jpg",
+   "thumb": "photos/tokyo/53-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sunshine_City_2012.JPG",
+   "credit": "Kakidai, CC BY-SA 3.0",
+   "title": "File:Sunshine City 2012.JPG"
+  }
+ ],
  "54": [
   {
    "src": "photos/tokyo/54-1.jpg",
@@ -1082,7 +1153,36 @@
    "credit": "Laika ac from UK, CC BY-SA 2.0"
   }
  ],
- "55": [],
+ "55": [
+  {
+   "src": "photos/tokyo/55-1.jpg",
+   "thumb": "photos/tokyo/55-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E6%9D%B1%E4%BA%AC%E9%83%BD%E8%B1%8A%E5%B3%B6%E5%8C%BA%E5%B7%A3%E9%B4%A8%E3%81%AE%E5%B7%A3%E9%B4%A8%E5%9C%B0%E8%94%B5%E9%80%9A%E3%82%8A%E5%95%86%E5%BA%97%E8%A1%97%E7%B8%81%E6%97%A5%E3%81%AE%E3%81%9F%E3%81%93%E7%84%BC%E3%81%8D%E5%B1%8B.JPG",
+   "credit": "User:たこ焼きファン, CC BY-SA 3.0",
+   "title": "File:東京都豊島区巣鴨の巣鴨地蔵通り商店街縁日のたこ焼き屋.JPG"
+  },
+  {
+   "src": "photos/tokyo/55-2.jpg",
+   "thumb": "photos/tokyo/55-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E5%B7%A3%E9%B4%A8%E3%82%B0%E3%83%83%E3%82%BA_2008_(2937029304).jpg",
+   "credit": "Go Ikeda, CC BY 2.0",
+   "title": "File:巣鴨グッズ 2008 (2937029304).jpg"
+  },
+  {
+   "src": "photos/tokyo/55-3.jpg",
+   "thumb": "photos/tokyo/55-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E5%B7%A3%E9%B4%A8%E3%81%AE%E8%B5%A4%E3%83%91%E3%83%B3%E3%83%84%E5%B1%8B_(3046795915).jpg",
+   "credit": "Kazuhiko Maeda, CC BY 2.0",
+   "title": "File:巣鴨の赤パンツ屋 (3046795915).jpg"
+  },
+  {
+   "src": "photos/tokyo/55-4.jpg",
+   "thumb": "photos/tokyo/55-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E6%97%A5%E6%9C%AC%E4%B8%80%E3%81%AE%E8%B5%A4%E3%83%91%E3%83%B3%E3%83%84_2008_%E5%B7%A3%E9%B4%A8_(2936417359).jpg",
+   "credit": "Go Ikeda, CC BY 2.0",
+   "title": "File:日本一の赤パンツ 2008 巣鴨 (2936417359).jpg"
+  }
+ ],
  "56": [
   {
    "src": "photos/tokyo/56-1.jpg",
@@ -1187,7 +1287,15 @@
    "credit": "江戸村のとくぞう, CC BY-SA 4.0"
   }
  ],
- "60": [],
+ "60": [
+  {
+   "src": "photos/tokyo/60-1.jpg",
+   "thumb": "photos/tokyo/60-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Samurai_Armor_2023.jpg",
+   "credit": "Immanuelle, CC BY-SA 4.0",
+   "title": "File:Samurai Armor 2023.jpg"
+  }
+ ],
  "61": [
   {
    "src": "photos/tokyo/61-1.jpg",
@@ -1220,12 +1328,6 @@
    "thumb": "photos/tokyo/62-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kannon_bosatsu.JPG",
    "credit": "Ennui, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/62-4.jpg",
-   "thumb": "photos/tokyo/62-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Kinkakujicho,_Kita_Ward,_Kyoto,_Kyoto_Prefecture_603-8361,_Japan_-_panoramio_(3).jpg",
-   "credit": "Fumihiko Ueno, CC BY 3.0"
   }
  ],
  "63": [
@@ -1234,24 +1336,6 @@
    "thumb": "photos/tokyo/63-1-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Yasukuni_Shrine_201005.jpg",
    "credit": "Wiiii, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/63-2.jpg",
-   "thumb": "photos/tokyo/63-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hiroshige_III,_Big_French_circus_on_the_grounds_of_Shokonsha_shrine,_1871.jpg",
-   "credit": "Hiroshige III, Public domain"
-  },
-  {
-   "src": "photos/tokyo/63-3.jpg",
-   "thumb": "photos/tokyo/63-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hitlerjugend_visit_to_Yasukuni_Shrine_State_Shint%C5%8D_wreath_procession_kannushi_1938.jpg",
-   "credit": "Sekai Gahō (世界画報) Pictorial World October 1938 published by , Public domain"
-  },
-  {
-   "src": "photos/tokyo/63-4.jpg",
-   "thumb": "photos/tokyo/63-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Irei_no_Izumi_at_yasukuni_shrine.jpg",
-   "credit": "Mariko Goda, CC BY-SA 2.0"
   }
  ],
  "64": [
@@ -1346,7 +1430,36 @@
    "credit": "jonny-mt, CC BY-SA 3.0"
   }
  ],
- "68": [],
+ "68": [
+  {
+   "src": "photos/tokyo/68-1.jpg",
+   "thumb": "photos/tokyo/68-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jindai-ji_(Sakura)_04.jpg",
+   "credit": "Higa4, CC0",
+   "title": "File:Jindai-ji (Sakura) 04.jpg"
+  },
+  {
+   "src": "photos/tokyo/68-2.jpg",
+   "thumb": "photos/tokyo/68-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jindai-ji_(Sakura)_01.jpg",
+   "credit": "Higa4, CC0",
+   "title": "File:Jindai-ji (Sakura) 01.jpg"
+  },
+  {
+   "src": "photos/tokyo/68-3.jpg",
+   "thumb": "photos/tokyo/68-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jindai-ji_(Sakura)_03.jpg",
+   "credit": "Higa4, CC0",
+   "title": "File:Jindai-ji (Sakura) 03.jpg"
+  },
+  {
+   "src": "photos/tokyo/68-4.jpg",
+   "thumb": "photos/tokyo/68-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jindai-ji_(Sakura)_02.jpg",
+   "credit": "Higa4, CC0",
+   "title": "File:Jindai-ji (Sakura) 02.jpg"
+  }
+ ],
  "69": [
   {
    "src": "photos/tokyo/69-1.jpg",
@@ -1365,12 +1478,6 @@
   {
    "src": "photos/tokyo/70-1.jpg",
    "thumb": "photos/tokyo/70-1-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:%E6%9D%B1%E9%83%BD%E5%90%8D%E6%89%80_%E6%B0%B8%E4%BB%A3%E6%A9%8B%E4%BD%83%E6%B2%96%E6%BC%81%E8%88%9F-Eitai_Bashi_Tsukudajima_Ryosen_MET_DP123243.jpg",
-   "credit": "Utagawa Hiroshige, CC0"
-  },
-  {
-   "src": "photos/tokyo/70-2.jpg",
-   "thumb": "photos/tokyo/70-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Tsukishima_monja_street.jpg",
    "credit": "User:Kentin, CC BY-SA 3.0"
   }
@@ -1401,7 +1508,36 @@
    "credit": "Wing1990hk, CC BY 3.0"
   }
  ],
- "72": [],
+ "72": [
+  {
+   "src": "photos/tokyo/72-1.jpg",
+   "thumb": "photos/tokyo/72-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Toyokawa-inari_Tokyo_0612150036.jpg",
+   "credit": "CC BY-SA 3.0",
+   "title": "File:Toyokawa-inari Tokyo 0612150036.jpg"
+  },
+  {
+   "src": "photos/tokyo/72-2.jpg",
+   "thumb": "photos/tokyo/72-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Benzaisonten_(Toyokawa-inari,_Tokyo).jpg",
+   "credit": "KENPEI, CC BY-SA 3.0",
+   "title": "File:Benzaisonten (Toyokawa-inari, Tokyo).jpg"
+  },
+  {
+   "src": "photos/tokyo/72-3.jpg",
+   "thumb": "photos/tokyo/72-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%EF%BC%B3hichifukujin_(Toyokawa-inari,_Tokyo).jpg",
+   "credit": "KENPEI, CC BY-SA 3.0",
+   "title": "File:Ｓhichifukujin (Toyokawa-inari, Tokyo).jpg"
+  },
+  {
+   "src": "photos/tokyo/72-4.jpg",
+   "thumb": "photos/tokyo/72-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Toyokawa-inari_Tokyo_0612150040.jpg",
+   "credit": "CC BY-SA 3.0",
+   "title": "File:Toyokawa-inari Tokyo 0612150040.jpg"
+  }
+ ],
  "73": [
   {
    "src": "photos/tokyo/73-1.jpg",
@@ -1422,6 +1558,27 @@
    "thumb": "photos/tokyo/74-1-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Ota-Memorial-Museum-Harajuku-01.jpg",
    "credit": "Rs1421, CC BY-SA 3.0"
+  },
+  {
+   "src": "photos/tokyo/74-2.jpg",
+   "thumb": "photos/tokyo/74-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ota_Memorial_Museum_of_Art,_exterior_2018.JPG",
+   "credit": "Wmpearl, CC0",
+   "title": "File:Ota Memorial Museum of Art, exterior 2018.JPG"
+  },
+  {
+   "src": "photos/tokyo/74-3.jpg",
+   "thumb": "photos/tokyo/74-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ota_Memorial_Museum_Tokyo.JPG",
+   "credit": "Harani0403, CC BY-SA 3.0",
+   "title": "File:Ota Memorial Museum Tokyo.JPG"
+  },
+  {
+   "src": "photos/tokyo/74-4.jpg",
+   "thumb": "photos/tokyo/74-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Tokyo_Ota_Memorial_Museum_of_Art_seen_from_the_south.jpg",
+   "credit": "Ymblanter, CC BY-SA 4.0",
+   "title": "File:Tokyo Ota Memorial Museum of Art seen from the south.jpg"
   }
  ],
  "75": [
@@ -1450,7 +1607,36 @@
    "credit": "Harani0403, CC BY-SA 3.0"
   }
  ],
- "76": [],
+ "76": [
+  {
+   "src": "photos/tokyo/76-1.jpg",
+   "thumb": "photos/tokyo/76-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Fukagawa_Edo_Museum.JPG",
+   "credit": "Abasaa, Public domain",
+   "title": "File:Fukagawa Edo Museum.JPG"
+  },
+  {
+   "src": "photos/tokyo/76-2.jpg",
+   "thumb": "photos/tokyo/76-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Fukagawa_Edo_Museum_on_the_30th_of_october_2010_-_43.jpg",
+   "credit": "Lionel Allorge, CC BY-SA 3.0",
+   "title": "File:Fukagawa Edo Museum on the 30th of october 2010 - 43.jpg"
+  },
+  {
+   "src": "photos/tokyo/76-3.jpg",
+   "thumb": "photos/tokyo/76-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Fukagawa_Edo_Museum_on_the_30th_of_october_2010_-_01.jpg",
+   "credit": "Lionel Allorge, CC BY-SA 3.0",
+   "title": "File:Fukagawa Edo Museum on the 30th of october 2010 - 01.jpg"
+  },
+  {
+   "src": "photos/tokyo/76-4.jpg",
+   "thumb": "photos/tokyo/76-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Fukagawa_Edo_Museum_on_the_30th_of_october_2010_-_03.jpg",
+   "credit": "Lionel Allorge, CC BY-SA 3.0",
+   "title": "File:Fukagawa Edo Museum on the 30th of october 2010 - 03.jpg"
+  }
+ ],
  "77": [
   {
    "src": "photos/tokyo/77-1.jpg",
@@ -1461,18 +1647,6 @@
   {
    "src": "photos/tokyo/77-2.jpg",
    "thumb": "photos/tokyo/77-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:%27Kamakura%27,_woodblock_print_by_Charles_W._Bartlett,_1916.jpg",
-   "credit": "Charles William Bartlett, Public domain"
-  },
-  {
-   "src": "photos/tokyo/77-3.jpg",
-   "thumb": "photos/tokyo/77-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:-Buddha_Sculpture-_MET_DP155601.jpg",
-   "credit": "Suzuki Shin'ichi I, CC0"
-  },
-  {
-   "src": "photos/tokyo/77-4.jpg",
-   "thumb": "photos/tokyo/77-4-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Buddha%27s_slippers,_K%C5%8Dtoku-in.jpg",
    "credit": "Alexandar Vujadinovic, CC BY-SA 4.0"
   }
@@ -1555,29 +1729,46 @@
    "credit": "CC BY-SA 3.0"
   }
  ],
- "81": [],
+ "81": [
+  {
+   "src": "photos/tokyo/81-1.jpg",
+   "thumb": "photos/tokyo/81-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Komachi_Dori-Kamakura.jpg",
+   "credit": "Urashimataro, Public domain",
+   "title": "File:Komachi Dori-Kamakura.jpg"
+  },
+  {
+   "src": "photos/tokyo/81-2.jpg",
+   "thumb": "photos/tokyo/81-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Komachi-dori_@_Kamakura_(9402256616).jpg",
+   "credit": "Guilhem Vellut from Annecy, France, CC BY 2.0",
+   "title": "File:Komachi-dori @ Kamakura (9402256616).jpg"
+  },
+  {
+   "src": "photos/tokyo/81-3.jpg",
+   "thumb": "photos/tokyo/81-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Komachi-dori_@_Kamakura_(9402255640).jpg",
+   "credit": "Guilhem Vellut from Annecy, France, CC BY 2.0",
+   "title": "File:Komachi-dori @ Kamakura (9402255640).jpg"
+  },
+  {
+   "src": "photos/tokyo/81-4.jpg",
+   "thumb": "photos/tokyo/81-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Komachi-dori_@_Kamakura_(9399492611).jpg",
+   "credit": "Guilhem Vellut from Annecy, France, CC BY 2.0",
+   "title": "File:Komachi-dori @ Kamakura (9399492611).jpg"
+  }
+ ],
  "82": [
   {
    "src": "photos/tokyo/82-1.jpg",
    "thumb": "photos/tokyo/82-1-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:EnoshimaAeralPhoto1988JP14.jpg",
-   "credit": "Attribution"
-  },
-  {
-   "src": "photos/tokyo/82-2.jpg",
-   "thumb": "photos/tokyo/82-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:19_-_The_Seven_Ri_Beach.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
-  },
-  {
-   "src": "photos/tokyo/82-3.jpg",
-   "thumb": "photos/tokyo/82-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:1_Chome_Enoshima,_Fujisawa-shi,_Kanagawa-ken_251-0036,_Japan_-_panoramio.jpg",
    "credit": "jetsun, CC BY-SA 3.0"
   },
   {
-   "src": "photos/tokyo/82-4.jpg",
-   "thumb": "photos/tokyo/82-4-t.jpg",
+   "src": "photos/tokyo/82-2.jpg",
+   "thumb": "photos/tokyo/82-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Enoshima.JPG",
    "credit": "Parag.naik, CC BY-SA 3.0"
   }
@@ -1594,18 +1785,6 @@
    "thumb": "photos/tokyo/83-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Art_Rink_in_Yokohama_Red_Brick_Warehouse_20100116.jpg",
    "credit": "掬茶, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/83-3.jpg",
-   "thumb": "photos/tokyo/83-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Yokohama-redbrickwarehouse-1917.jpg",
-   "credit": "Unknown authorUnknown author, Public domain"
-  },
-  {
-   "src": "photos/tokyo/83-4.jpg",
-   "thumb": "photos/tokyo/83-4-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Yokohama_Port_Station_1929.jpg",
-   "credit": "Unknown authorUnknown author, Public domain"
   }
  ],
  "84": [
@@ -1634,7 +1813,29 @@
    "credit": "Yves Mertens, CC BY-SA 4.0"
   }
  ],
- "85": [],
+ "85": [
+  {
+   "src": "photos/tokyo/85-1.jpg",
+   "thumb": "photos/tokyo/85-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Cupnoodles-Museum-Yokohama.jpg",
+   "credit": "Rs1421, CC BY-SA 3.0",
+   "title": "File:Cupnoodles-Museum-Yokohama.jpg"
+  },
+  {
+   "src": "photos/tokyo/85-2.jpg",
+   "thumb": "photos/tokyo/85-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Cup_Noodle_Museum_Yokohama.jpg",
+   "credit": "Matsujima, CC BY-SA 4.0",
+   "title": "File:Cup Noodle Museum Yokohama.jpg"
+  },
+  {
+   "src": "photos/tokyo/85-3.jpg",
+   "thumb": "photos/tokyo/85-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Cup_Noodles_Museum_@_Yokohama_(9052323677).jpg",
+   "credit": "Guilhem Vellut from Annecy, France, CC BY 2.0",
+   "title": "File:Cup Noodles Museum @ Yokohama (9052323677).jpg"
+  }
+ ],
  "86": [
   {
    "src": "photos/tokyo/86-1.jpg",
@@ -1697,18 +1898,12 @@
   {
    "src": "photos/tokyo/88-2.jpg",
    "thumb": "photos/tokyo/88-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Kawagoe_City_Hall_2020-11_ac.jpg",
-   "credit": "Asturio Cantabrio, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/88-3.jpg",
-   "thumb": "photos/tokyo/88-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kawagoe_Festival_at_night.jpg",
    "credit": "Kounosu, CC BY-SA 3.0"
   },
   {
-   "src": "photos/tokyo/88-4.jpg",
-   "thumb": "photos/tokyo/88-4-t.jpg",
+   "src": "photos/tokyo/88-3.jpg",
+   "thumb": "photos/tokyo/88-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kawagoe_Station_east_entrance_20160320.JPG",
    "credit": "DAJF, CC BY-SA 4.0"
   }
@@ -1841,24 +2036,18 @@
   {
    "src": "photos/tokyo/94-1.jpg",
    "thumb": "photos/tokyo/94-1-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:KawaguchiKo.jpg",
-   "credit": "BehBeh, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/94-2.jpg",
-   "thumb": "photos/tokyo/94-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:170505_Lake_Kawaguchi_Japan01s3.jpg",
    "credit": "663highland, CC BY-SA 4.0"
   },
   {
-   "src": "photos/tokyo/94-3.jpg",
-   "thumb": "photos/tokyo/94-3-t.jpg",
+   "src": "photos/tokyo/94-2.jpg",
+   "thumb": "photos/tokyo/94-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Fuji_Kawaguchi_357.JPG",
    "credit": "Marion &amp; Christoph Aistleitner, CC0"
   },
   {
-   "src": "photos/tokyo/94-4.jpg",
-   "thumb": "photos/tokyo/94-4-t.jpg",
+   "src": "photos/tokyo/94-3.jpg",
+   "thumb": "photos/tokyo/94-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Fujifrommarubun.jpg",
    "credit": "Copyrighted free use"
   }
@@ -1925,18 +2114,6 @@
   {
    "src": "photos/tokyo/97-2.jpg",
    "thumb": "photos/tokyo/97-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Kinkakujicho,_Kita_Ward,_Kyoto,_Kyoto_Prefecture_603-8361,_Japan_-_panoramio_(3).jpg",
-   "credit": "Fumihiko Ueno, CC BY 3.0"
-  },
-  {
-   "src": "photos/tokyo/97-3.jpg",
-   "thumb": "photos/tokyo/97-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Kodaki_fuji_frm_shojinko_refurb.jpg",
-   "credit": "名古屋太郎, (edited by Hannes_24), CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/97-4.jpg",
-   "thumb": "photos/tokyo/97-4-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Nikko_Taiyuin_Brackets_Flat.jpg",
    "credit": "Fg2, Public domain"
   }
@@ -1967,13 +2144,56 @@
    "credit": "lumoplank, CC0"
   }
  ],
- "99": [],
+ "99": [
+  {
+   "src": "photos/tokyo/99-1.jpg",
+   "thumb": "photos/tokyo/99-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Reihikaku,_Kanmangafuchi_abyss.jpg",
+   "credit": "Miyuki Meinaka, CC BY-SA 4.0",
+   "title": "File:Reihikaku, Kanmangafuchi abyss.jpg"
+  },
+  {
+   "src": "photos/tokyo/99-2.jpg",
+   "thumb": "photos/tokyo/99-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Kanmangafuchi_abyss,_July_2022.jpg",
+   "credit": "Miyuki Meinaka, CC BY-SA 4.0",
+   "title": "File:Kanmangafuchi abyss, July 2022.jpg"
+  },
+  {
+   "src": "photos/tokyo/99-3.jpg",
+   "thumb": "photos/tokyo/99-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Jiun-ji_temple,_Kanmangafuchi_abyss.jpg",
+   "credit": "Miyuki Meinaka, CC BY-SA 4.0",
+   "title": "File:Jiun-ji temple, Kanmangafuchi abyss.jpg"
+  },
+  {
+   "src": "photos/tokyo/99-4.jpg",
+   "thumb": "photos/tokyo/99-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E6%86%BE%E6%BA%80%E3%83%B6%E6%B7%B5.jpg",
+   "credit": "Koda6029, CC BY-SA 4.0",
+   "title": "File:憾満ヶ淵.jpg"
+  }
+ ],
  "100": [
   {
    "src": "photos/tokyo/100-1.jpg",
    "thumb": "photos/tokyo/100-1-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:A_view_of_Sawara-Honmachi.JPG",
    "credit": "Tamaki, Public domain"
+  },
+  {
+   "src": "photos/tokyo/100-2.jpg",
+   "thumb": "photos/tokyo/100-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sawara_mougins.jpg",
+   "credit": "アリオト, Public domain",
+   "title": "File:Sawara mougins.jpg"
+  },
+  {
+   "src": "photos/tokyo/100-3.jpg",
+   "thumb": "photos/tokyo/100-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Sawara-rice.jpg",
+   "credit": "Tohomar, CC BY-SA 3.0",
+   "title": "File:Sawara-rice.jpg"
   }
  ],
  "101": [
@@ -2044,12 +2264,6 @@
   {
    "src": "photos/tokyo/103-3.jpg",
    "thumb": "photos/tokyo/103-3-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Hiroshige_Travellers_lighting_their_pipes_by_a_fire.jpg",
-   "credit": "Utagawa Hiroshige, Public domain"
-  },
-  {
-   "src": "photos/tokyo/103-4.jpg",
-   "thumb": "photos/tokyo/103-4-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Karuizawa_-_Karuizawa6410.jpg",
    "credit": "lumoplank, CC0"
   }
@@ -2086,29 +2300,46 @@
   {
    "src": "photos/tokyo/106-1.jpg",
    "thumb": "photos/tokyo/106-1-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:2025_Hitachi_Seaside_Park_2.jpg",
-   "credit": "Kakidai, CC BY-SA 4.0"
-  },
-  {
-   "src": "photos/tokyo/106-2.jpg",
-   "thumb": "photos/tokyo/106-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Baby_blue-eyes,Nemophila,Hitachinaka-city,Japan.jpg",
-   "credit": "katorisi, CC BY-SA 3.0"
-  },
-  {
-   "src": "photos/tokyo/106-3.jpg",
-   "thumb": "photos/tokyo/106-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Hitachi_Seaside_Park.jpg",
    "credit": "Ohamberger, CC BY-SA 4.0"
   },
   {
-   "src": "photos/tokyo/106-4.jpg",
-   "thumb": "photos/tokyo/106-4-t.jpg",
+   "src": "photos/tokyo/106-2.jpg",
+   "thumb": "photos/tokyo/106-2-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kochia_Hitachi_Seaside_Park.jpg",
    "credit": "dacheket, CC BY 2.0"
   }
  ],
- "107": [],
+ "107": [
+  {
+   "src": "photos/tokyo/107-1.jpg",
+   "thumb": "photos/tokyo/107-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ashikaga_Flower_Park_Flower_Stage_In_Late_Autumn_1.jpg",
+   "credit": "ja:User:京浜にけ, CC BY-SA 3.0",
+   "title": "File:Ashikaga Flower Park Flower Stage In Late Autumn 1.jpg"
+  },
+  {
+   "src": "photos/tokyo/107-2.jpg",
+   "thumb": "photos/tokyo/107-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:JR_Ryomo_Line_Ashikaga_Flower_Park_Station_Platform.jpg",
+   "credit": "Mister0124, CC BY-SA 4.0",
+   "title": "File:JR Ryomo Line Ashikaga Flower Park Station Platform.jpg"
+  },
+  {
+   "src": "photos/tokyo/107-3.jpg",
+   "thumb": "photos/tokyo/107-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ashikaga_Flower_Park_20221030-4.jpg",
+   "credit": "Suicasmo, CC BY-SA 4.0",
+   "title": "File:Ashikaga Flower Park 20221030-4.jpg"
+  },
+  {
+   "src": "photos/tokyo/107-4.jpg",
+   "thumb": "photos/tokyo/107-4-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Ashikaga_Flower_Park_20221030-6.jpg",
+   "credit": "Suicasmo, CC BY-SA 4.0",
+   "title": "File:Ashikaga Flower Park 20221030-6.jpg"
+  }
+ ],
  "108": [
   {
    "src": "photos/tokyo/108-1.jpg",
@@ -2135,7 +2366,29 @@
    "credit": "Σ64, CC BY 3.0"
   }
  ],
- "109": [],
+ "109": [
+  {
+   "src": "photos/tokyo/109-1.jpg",
+   "thumb": "photos/tokyo/109-1-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:Fujiko%EF%BD%A5F%EF%BD%A5Fujio_Museum_-01.jpg",
+   "credit": "Aimaimyi, CC BY-SA 3.0",
+   "title": "File:Fujiko･F･Fujio Museum -01.jpg"
+  },
+  {
+   "src": "photos/tokyo/109-2.jpg",
+   "thumb": "photos/tokyo/109-2-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E8%97%A4%E5%AD%90_F_%E4%B8%8D%E4%BA%8C%E9%9B%84%E5%8D%9A%E7%89%A9%E9%A4%A8_(49292298672).jpg",
+   "credit": "Wei-Te Wong from Taipei City, Taiwan, Republic of China, CC BY-SA 2.0",
+   "title": "File:藤子 F 不二雄博物館 (49292298672).jpg"
+  },
+  {
+   "src": "photos/tokyo/109-3.jpg",
+   "thumb": "photos/tokyo/109-3-t.jpg",
+   "page": "https://commons.wikimedia.org/wiki/File:%E8%97%A4%E5%AD%90_F_%E4%B8%8D%E4%BA%8C%E9%9B%84%E5%8D%9A%E7%89%A9%E9%A4%A8_(49292081636).jpg",
+   "credit": "Wei-Te Wong from Taipei City, Taiwan, Republic of China, CC BY-SA 2.0",
+   "title": "File:藤子 F 不二雄博物館 (49292081636).jpg"
+  }
+ ],
  "110": [
   {
    "src": "photos/tokyo/110-1.jpg",
@@ -2146,18 +2399,12 @@
   {
    "src": "photos/tokyo/110-2.jpg",
    "thumb": "photos/tokyo/110-2-t.jpg",
-   "page": "https://commons.wikimedia.org/wiki/File:Bjh25_Kawasaki_templebell.jpg",
-   "credit": "Felice Beato (ca. 1833-1908), Public domain"
-  },
-  {
-   "src": "photos/tokyo/110-3.jpg",
-   "thumb": "photos/tokyo/110-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kawasaki_Daishi_-_2024_Oct_1_various_19_04_06_411000.jpeg",
    "credit": "Nesnad, CC BY 4.0"
   },
   {
-   "src": "photos/tokyo/110-4.jpg",
-   "thumb": "photos/tokyo/110-4-t.jpg",
+   "src": "photos/tokyo/110-3.jpg",
+   "thumb": "photos/tokyo/110-3-t.jpg",
    "page": "https://commons.wikimedia.org/wiki/File:Kawasaki_Daishi_Restoration_Pagoda.jpg",
    "credit": "ペン太, CC BY 2.5"
   }

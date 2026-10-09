@@ -18,7 +18,10 @@ const CATS = {
   shopping: { label: 'Шоппинг', one: 'Шоппинг', color: 'var(--c-street)' },
   view: { label: 'Виды', one: 'Смотровая / вид', color: 'var(--c-view)' },
   town: { label: 'Города', one: 'Город / поездка', color: 'var(--c-town)' },
+  mall: { label: 'ТЦ', one: 'Торговый центр', color: 'var(--c-mall)' },
+  store: { label: 'Магазины', one: 'Магазин', color: 'var(--c-mall)' },
 };
+const BRANDS = { donki: 'Don Quijote', uniqlo: 'Uniqlo', knives: 'Японские ножи', animate: 'Animate', vivienne: 'Vivienne Westwood' };
 /* ---------------- cities ---------------- */
 const CITIES = {
   kyoto: {
@@ -64,10 +67,12 @@ const CITIES = {
     chips: [
       { key: 'culture', label: 'Культура', color: 'var(--c-temple)', test: (p) => p.kind === 'culture' },
       { key: 'shopping', label: 'Шоппинг', color: 'var(--c-street)', test: (p) => p.kind === 'shopping' },
+      { key: 'malls', label: 'ТЦ и магазины', color: 'var(--c-mall)', test: (p) => ['mall', 'store'].includes(p.category) },
       { key: 'town', label: 'Города и поездки', color: 'var(--c-town)', test: (p) => p.kind === 'town' },
       { key: 'view', label: 'Виды и парки', color: 'var(--c-view)', test: (p) => p.kind === 'view' },
     ],
     unesco: false,
+    brands: true,
     note: 'Цвет метки — тип места. Полупрозрачные зоны — районы Токио, нажмите на название района. «Города и поездки» — пригороды и города на день, в карточке есть блок «Как добраться».',
     offline: [[[35.55, 139.6], [35.8, 139.9], 10, 13], [[35.62, 139.66], [35.74, 139.83], 14, 15], [[35.65, 139.69], [35.72, 139.81], 16, 16]],
     // tourist districts drawn as soft zones; r in metres
@@ -111,14 +116,13 @@ const ck = (k) => (CITY_KEY === 'kyoto' ? k : `${CITY_KEY}:${k}`);
 const KIND_LABEL = { culture: 'Культура', shopping: 'Шоппинг', town: 'Поездка за город', view: 'Виды и парки' };
 
 // SVG strokes can't use CSS variables, so polylines get plain hex colours
-const LINE_COLORS = { street: '#e0901a', market: '#e0901a', nature: '#2f9a5a', garden: '#2f9a5a', other: '#6b7a8c', museum: '#6b7a8c', temple: '#3b5ba5', shrine: '#d24a2c', castle: '#7a4fa0', shopping: '#e0901a', view: '#2a8fb8', town: '#8a5a3c' };
+const LINE_COLORS = { street: '#e0901a', market: '#e0901a', nature: '#2f9a5a', garden: '#2f9a5a', other: '#6b7a8c', museum: '#6b7a8c', temple: '#3b5ba5', shrine: '#d24a2c', castle: '#7a4fa0', mall: '#d2477e', store: '#d2477e', shopping: '#e0901a', view: '#2a8fb8', town: '#8a5a3c' };
 const CROWD_TXT = ['', 'почти пусто', 'спокойно', 'умеренно', 'людно', 'очень людно'];
 
 const state = {
   places: [],
   byId: new Map(),
   markers: new Map(),
-  lines: new Map(), // id -> layer group with street/path polylines
   visited: new Set(LS.get(ck('visited'), [])),
   favs: new Set(LS.get(ck('favs'), [])),
   filter: LS.get(ck('filter'), { cat: 'all', must: false, unesco: false, fav: false, hideVisited: false }),
@@ -135,33 +139,63 @@ const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '
 // Esri World Street Map: no key needed, English labels (readable without Japanese).
 const TILE_URL = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}';
 
-const map = L.map('map', {
-  zoomControl: false,
-  attributionControl: true,
-  maxZoom: 19,
+const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+const view0 = LS.get(ck('view'), { c: CITY.center, z: CITY.zoom });
+// MapLibre GL renders on the GPU: smooth pinch-zoom/pan in one gesture, like Google Maps
+const map = new maplibregl.Map({
+  container: 'map',
+  style: {
+    version: 8,
+    sources: { base: { type: 'raster', tiles: [TILE_URL], tileSize: 256, maxzoom: 19, attribution: 'Tiles © Esri' } },
+    layers: [{ id: 'base', type: 'raster', source: 'base', paint: dark ? { 'raster-brightness-max': 0.82, 'raster-saturation': -0.2 } : {} }],
+  },
+  center: [view0.c[1], view0.c[0]],
+  zoom: view0.z,
   minZoom: CITY.minZoom,
-  maxBounds: CITY.bounds,
-  maxBoundsViscosity: 0.8,
-  tap: false,
-}).setView(LS.get(ck('view'), { c: CITY.center }).c, LS.get(ck('view'), { z: CITY.zoom }).z);
-
-L.tileLayer(TILE_URL, {
-  maxNativeZoom: 19,
   maxZoom: 19,
-  crossOrigin: true, // CORS responses can be cached by the service worker for offline use
-  attribution: 'Tiles © Esri',
-}).addTo(map);
-if (matchMedia('(min-width: 820px)').matches) L.control.zoom({ position: 'bottomright' }).addTo(map);
+  maxBounds: [[CITY.bounds[0][1], CITY.bounds[0][0]], [CITY.bounds[1][1], CITY.bounds[1][0]]],
+  dragRotate: false,
+  pitchWithRotate: false,
+  touchPitch: false,
+  attributionControl: { compact: true },
+  fadeDuration: 0,
+});
+map.touchZoomRotate.disableRotation();
+map.keyboard.disableRotation();
+if (matchMedia('(min-width: 820px)').matches) map.addControl(new maplibregl.NavigationControl({ showCompass: false }), 'bottom-right');
+const mapReady = new Promise((r) => map.once('load', r));
+const ll = (lat, lng) => [lng, lat];
 
+let labelState = '';
 function updateLabelClass() {
   const z = map.getZoom();
+  const st = z < 12.5 ? 'hide-labels hide-labels-minor' : z < 14.5 ? 'hide-labels-minor' : '';
+  if (st === labelState) return;
+  labelState = st;
   const el = map.getContainer();
-  el.classList.toggle('hide-labels', z < 13);
-  el.classList.toggle('hide-labels-minor', z < 15);
+  el.classList.toggle('hide-labels', z < 12.5);
+  el.classList.toggle('hide-labels-minor', z < 14.5);
 }
-map.on('zoomend', updateLabelClass);
-map.on('moveend', () => LS.set(ck('view'), { c: [map.getCenter().lat, map.getCenter().lng], z: map.getZoom() }));
+map.on('zoom', updateLabelClass);
+map.on('moveend', () => { const c = map.getCenter(); LS.set(ck('view'), { c: [c.lat, c.lng], z: map.getZoom() }); });
 updateLabelClass();
+
+// a circle as a polygon ring (for districts and GPS accuracy)
+function circleRing(lat, lng, r, n = 48) {
+  const pts = [];
+  const dLat = r / 111320, dLng = r / (111320 * Math.cos((lat * Math.PI) / 180));
+  for (let i = 0; i <= n; i++) {
+    const a = (i / n) * 2 * Math.PI;
+    pts.push([lng + dLng * Math.cos(a), lat + dLat * Math.sin(a)]);
+  }
+  return pts;
+}
+
+let lastMarkerTap = 0;
+function domMarker(lat, lng, el, onClick, anchor = 'bottom') {
+  if (onClick) el.addEventListener('click', (e) => { e.stopPropagation(); lastMarkerTap = Date.now(); onClick(); });
+  return new maplibregl.Marker({ element: el, anchor }).setLngLat(ll(lat, lng));
+}
 
 function pinHtml(p) {
   const cls = ['pin', 'p' + (p.priority || 2)];
@@ -170,14 +204,19 @@ function pinHtml(p) {
   if (state.selected === p.id) cls.push('sel');
   return `<div class="${cls.join(' ')}" style="--c:${(CATS[p.category] || CATS.other).color}"><b><span>${p.id}</span></b></div>`;
 }
-function pinIcon(p) {
-  const s = p.priority === 1 ? 36 : p.priority === 3 ? 24 : 30;
-  return L.divIcon({ className: 'pinwrap', html: pinHtml(p), iconSize: [s, s], iconAnchor: [s / 2, s * 1.2], tooltipAnchor: [0, 0] });
+function markerEl(p) {
+  const el = document.createElement('div');
+  el.className = 'mk mk-p' + (p.priority || 2);
+  el.innerHTML = pinHtml(p) + `<span class="lbl${p.priority === 1 ? '' : ' minor'}">${esc(p.name_ru)}</span>`;
+  el.style.zIndex = p.priority === 1 ? 3 : p.priority === 3 ? 1 : 2;
+  return el;
 }
 function refreshMarker(id) {
   const m = state.markers.get(id);
   const p = state.byId.get(id);
-  if (m && p) m.setIcon(pinIcon(p));
+  if (!m || !p) return;
+  m.getElement().firstElementChild.outerHTML = pinHtml(p);
+  m.getElement().style.zIndex = state.selected === id ? 10 : p.priority === 1 ? 3 : p.priority === 3 ? 1 : 2;
 }
 
 /* ---------------- time / open status (JST) ---------------- */
@@ -223,20 +262,41 @@ function renderChips() {
   const f = state.filter;
   $('#chips').innerHTML = CHIP_DEFS.map((c) => {
     let on;
-    if (c.key === 'all') on = f.cat === 'all' && !f.must && !f.unesco && !f.fav;
+    if (c.key === 'all') on = f.cat === 'all' && !f.must && !f.unesco && !f.fav && !f.brand;
     else if (c.flag) on = !!f[c.key];
     else on = f.cat === c.key;
     const dot = c.cat ? `<span class="dot" style="background:${c.color}"></span>` : '';
     return `<button class="chip${on ? ' on' : ''}" data-k="${c.key}">${dot}${c.label}</button>`;
-  }).join('');
+  }).join('') + brandSelect();
 }
+function brandSelect() {
+  if (!CITY.brands) return '';
+  const count = (b) => state.places.filter((p) => (p.brands || []).includes(b)).length;
+  const opts = Object.entries(BRANDS).map(([k, v]) => `<option value="${k}"${state.filter.brand === k ? ' selected' : ''}>${v} (${count(k)})</option>`).join('');
+  return `<label class="chip brand${state.filter.brand ? ' on' : ''}"><span>${state.filter.brand ? '🛍 ' + BRANDS[state.filter.brand] : '🛍 Бренды'} ▾</span>
+    <select id="brand-sel" aria-label="Бренд"><option value="">Все бренды</option>${opts}</select></label>`;
+}
+$('#chips').addEventListener('change', (e) => {
+  if (e.target.id !== 'brand-sel') return;
+  state.filter.brand = e.target.value || null;
+  LS.set(ck('filter'), state.filter);
+  applyFilter();
+  // show every shop of the chosen brand at once
+  const pts = visiblePlaces();
+  if (state.filter.brand && pts.length) {
+    const b = new maplibregl.LngLatBounds();
+    pts.forEach((p) => b.extend([p.lng, p.lat]));
+    map.fitBounds(b, { padding: { top: 130, bottom: 120, left: 40, right: 40 }, maxZoom: 15, duration: 600 });
+    toast(`${BRANDS[state.filter.brand]}: ${pts.length} мест`);
+  }
+});
 $('#chips').addEventListener('click', (e) => {
   const b = e.target.closest('.chip');
   if (!b) return;
   const k = b.dataset.k;
   const def = CHIP_DEFS.find((c) => c.key === k);
   const f = state.filter;
-  if (k === 'all') Object.assign(f, { cat: 'all', must: false, unesco: false, fav: false });
+  if (k === 'all') Object.assign(f, { cat: 'all', must: false, unesco: false, fav: false, brand: null });
   else if (def.flag) f[k] = !f[k];
   else f.cat = f.cat === k ? 'all' : k;
   LS.set(ck('filter'), f);
@@ -249,12 +309,13 @@ function matches(p) {
   if (f.unesco && !p.unesco) return false;
   if (f.fav && !state.favs.has(p.id)) return false;
   if (f.hideVisited && state.visited.has(p.id)) return false;
+  if (f.brand && !(p.brands || []).includes(f.brand)) return false;
   if (f.cat !== 'all') {
     const chip = CITY.chips.find((c) => c.key === f.cat);
     if (chip && !chip.test(p)) return false;
   }
   if (state.q) {
-    const hay = `${p.id} ${p.name_ru} ${p.name_en} ${p.name_ja} ${p.area} ${p.short}`.toLowerCase();
+    const hay = `${p.id} ${p.name_ru} ${p.name_en} ${p.name_ja} ${p.area} ${p.short} ${(p.brands || []).map((b) => BRANDS[b]).join(' ')}`.toLowerCase();
     if (!state.q.split(/\s+/).every((w) => hay.includes(w))) return false;
   }
   return true;
@@ -267,12 +328,13 @@ function applyFilter() {
   const vis = new Set(visiblePlaces().map((p) => p.id));
   for (const [id, m] of state.markers) {
     const on = vis.has(id) || state.selected === id;
-    if (on && !map.hasLayer(m)) m.addTo(map);
-    if (!on && map.hasLayer(m)) m.remove();
-    const ln = state.lines.get(id);
-    if (ln && on && !map.hasLayer(ln)) ln.addTo(map);
-    if (ln && !on && map.hasLayer(ln)) ln.remove();
+    if (on && !m._on) { m.addTo(map); m._on = true; }
+    if (!on && m._on) { m.remove(); m._on = false; }
   }
+  const ids = [...state.markers.keys()].filter((id) => vis.has(id) || state.selected === id);
+  mapReady.then(() => {
+    for (const l of ['lines-casing', 'lines-main']) if (map.getLayer(l)) map.setFilter(l, ['in', ['get', 'id'], ['literal', ids]]);
+  });
   $('#count').textContent = `Список · ${vis.size}`;
   if ($('#list').classList.contains('open')) renderList();
 }
@@ -313,7 +375,14 @@ function closeSheet(id, silent) {
 $('#sheet-close').onclick = () => closeSheet('sheet');
 $('#list-close').onclick = () => closeSheet('list');
 $('#menu-close').onclick = () => closeSheet('menu');
-map.on('click', () => sheets.forEach((s) => closeSheet(s)));
+map.on('click', (e) => {
+  if (Date.now() - lastMarkerTap < 500) return;
+  // tap on a street line opens its place; tolerance box helps fingers
+  const { x, y } = e.point;
+  const hit = map.getLayer('lines-main') && map.queryRenderedFeatures([[x - 8, y - 8], [x + 8, y + 8]], { layers: ['lines-main'] });
+  if (hit && hit.length) return selectPlace(hit[0].properties.id, { fly: false });
+  sheets.forEach((s) => closeSheet(s));
+});
 
 // drag-to-dismiss / expand on mobile
 function enableDrag(sheet) {
@@ -403,6 +472,8 @@ function renderPlace(p) {
 
       <p class="lead">${esc(p.description)}</p>
 
+      ${p.buy ? `<div class="tipbox buybox"><b>🛍 Что купить</b>${esc(p.buy)}</div>` : ''}
+      ${(p.brands || []).length ? `<div class="badges">${p.brands.map((b) => `<span class="badge brand-b">${BRANDS[b] || b}</span>`).join('')}</div>` : ''}
       ${p.tip ? `<div class="tipbox"><b>Как лучше посетить</b>${esc(p.tip)}</div>` : ''}
 
       <div class="facts">
@@ -446,7 +517,7 @@ function selectPlace(id, { fly = true, push = true } = {}) {
   if (prev != null && prev !== id) refreshMarker(prev);
   refreshMarker(id);
   const m = state.markers.get(id);
-  if (m && !map.hasLayer(m)) m.addTo(map);
+  if (m && !m._on) { m.addTo(map); m._on = true; }
 
   const body = $('#sheet-body');
   body.innerHTML = renderPlace(p);
@@ -460,20 +531,22 @@ function selectPlace(id, { fly = true, push = true } = {}) {
 // keep the point visible above the bottom sheet / right of the side panel
 function flyAboveSheet(lat, lng) {
   const wide = matchMedia('(min-width: 820px)').matches;
-  const z = Math.max(map.getZoom(), 14);
-  const target = map.project([lat, lng], z);
-  const off = wide ? L.point(-205, 0) : L.point(0, window.innerHeight * 0.28);
-  map.flyTo(map.unproject(target.add(off), z), z, { duration: 0.5 });
+  map.flyTo({
+    center: ll(lat, lng),
+    zoom: Math.max(map.getZoom(), 14),
+    offset: wide ? [205, 0] : [0, -window.innerHeight * 0.28],
+    duration: 600,
+  });
 }
 
 /* ---------------- hotel ---------------- */
 const ICON_BED = '<svg viewBox="0 0 24 24"><path d="M3 18V7M3 14h18v4M21 14v-2a3 3 0 0 0-3-3h-7v5"/><circle cx="7" cy="11" r="1.6"/></svg>';
-const hotelMarker = L.marker([HOTEL.lat, HOTEL.lng], {
-  icon: L.divIcon({ className: 'pinwrap', html: `<div class="hotel-pin">${ICON_BED}</div>`, iconSize: [38, 38], iconAnchor: [19, 19] }),
-  zIndexOffset: 3000,
-}).addTo(map);
-hotelMarker.bindTooltip('Наш отель', { permanent: true, direction: 'bottom', className: 'lbl hotel-lbl', offset: [0, 18] });
-hotelMarker.on('click', openHotel);
+{
+  const el = document.createElement('div');
+  el.className = 'mk-hotel';
+  el.innerHTML = `<div class="hotel-pin">${ICON_BED}</div><span class="lbl hotel-lbl">Наш отель</span>`;
+  domMarker(HOTEL.lat, HOTEL.lng, el, () => openHotel(), 'center').addTo(map);
+}
 
 function renderHotel() {
   const q = encodeURIComponent(HOTEL.name);
@@ -593,23 +666,31 @@ $('#list-body').addEventListener('click', (e) => {
 let meMarker, meCircle, watchId;
 function locate(silent) {
   if (!navigator.geolocation) return toast('Геолокация недоступна');
-  if (watchId != null && state.me) { map.flyTo(state.me, Math.max(map.getZoom(), 15)); return; }
+  if (watchId != null && state.me) { map.flyTo({ center: ll(...state.me), zoom: Math.max(map.getZoom(), 15) }); return; }
   let first = true;
   watchId = navigator.geolocation.watchPosition((pos) => {
     state.me = [pos.coords.latitude, pos.coords.longitude];
     const acc = Math.min(pos.coords.accuracy || 0, 1000);
     if (!meMarker) {
-      meCircle = L.circle(state.me, { radius: acc, color: '#2a7cf0', weight: 1, opacity: 0.5, fillOpacity: 0.12, interactive: false }).addTo(map);
-      meMarker = L.marker(state.me, { icon: L.divIcon({ className: '', html: '<div class="me-dot"></div>', iconSize: [22, 22] }), interactive: false, zIndexOffset: 4000 }).addTo(map);
+      const el = document.createElement('div');
+      el.className = 'me-dot';
+      meMarker = new maplibregl.Marker({ element: el, anchor: 'center' }).setLngLat(ll(...state.me)).addTo(map);
     } else {
-      meMarker.setLatLng(state.me);
-      meCircle.setLatLng(state.me).setRadius(acc);
+      meMarker.setLngLat(ll(...state.me));
     }
+    const ring = { type: 'Feature', geometry: { type: 'Polygon', coordinates: [circleRing(state.me[0], state.me[1], Math.max(acc, 5))] } };
+    mapReady.then(() => {
+      if (map.getSource('me-acc')) map.getSource('me-acc').setData(ring);
+      else {
+        map.addSource('me-acc', { type: 'geojson', data: ring });
+        map.addLayer({ id: 'me-acc', type: 'fill', source: 'me-acc', paint: { 'fill-color': '#2a7cf0', 'fill-opacity': 0.12, 'fill-outline-color': '#2a7cf0' } });
+      }
+    });
     LS.set('geo', true);
     $('#btn-locate').classList.add('active');
     if (first) {
       first = false;
-      if (!silent) map.flyTo(state.me, Math.max(map.getZoom(), 15));
+      if (!silent) map.flyTo({ center: ll(...state.me), zoom: Math.max(map.getZoom(), 15) });
       if ($('#list').classList.contains('open')) renderList();
     }
   }, (err) => {
@@ -645,7 +726,7 @@ document.addEventListener('visibilitychange', () => {
 $('#btn-menu').onclick = () => { renderMenu(); openSheet('menu'); };
 function renderMenu() {
   const total = state.places.length;
-  const legend = (CITY_KEY === 'kyoto' ? ['temple', 'shrine', 'castle', 'garden', 'street', 'museum'] : ['temple', 'shrine', 'museum', 'shopping', 'view', 'town', 'garden'])
+  const legend = (CITY_KEY === 'kyoto' ? ['temple', 'shrine', 'castle', 'garden', 'street', 'museum'] : ['temple', 'shrine', 'museum', 'shopping', 'mall', 'view', 'town', 'garden'])
     .map((k) => `<span><i style="background:${CATS[k].color}"></i>${CATS[k].label}</span>`).join('');
   $('#menu-body').innerHTML = `<div class="menu">
     <h2>${CITY.name}</h2>
@@ -677,8 +758,10 @@ function renderMenu() {
 function tileUrlsForBBox(b, zMin, zMax) {
   const urls = [];
   for (let z = zMin; z <= zMax; z++) {
-    const p1 = map.project([b[1][0], b[0][1]], z).divideBy(256).floor();
-    const p2 = map.project([b[0][0], b[1][1]], z).divideBy(256).floor();
+    const n = 2 ** z;
+    const tx = (lng) => Math.floor(((lng + 180) / 360) * n);
+    const ty = (lat) => { const r = (lat * Math.PI) / 180; return Math.floor(((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n); };
+    const p1 = { x: tx(b[0][1]), y: ty(b[1][0]) }, p2 = { x: tx(b[1][1]), y: ty(b[0][0]) };
     for (let x = p1.x; x <= p2.x; x++) for (let y = p1.y; y <= p2.y; y++) {
       urls.push(TILE_URL.replace('{z}', z).replace('{x}', x).replace('{y}', y));
     }
@@ -728,15 +811,32 @@ function toast(msg) {
 /* ---------------- districts ---------------- */
 const DISTRICT_COLORS = ['#e05a47', '#3b7dd8', '#2f9a5a', '#c98a1b', '#8a5ad8', '#d2477e', '#1f9aa8'];
 function drawDistricts() {
-  CITY.districts.forEach(([name, lat, lng, r, note], i) => {
-    const color = DISTRICT_COLORS[i % DISTRICT_COLORS.length];
-    L.circle([lat, lng], { radius: r, color, weight: 1.5, dashArray: '5 6', opacity: 0.7, fillColor: color, fillOpacity: 0.09, interactive: false }).addTo(map);
-    const lbl = L.marker([lat, lng], {
-      icon: L.divIcon({ className: 'district', html: `<span style="--dc:${color}">${esc(name)}</span>`, iconSize: [0, 0] }),
-      zIndexOffset: -1000,
-    }).addTo(map);
-    lbl.on('click', () => openDistrict(name, note, lat, lng));
+  if (!CITY.districts.length) return;
+  const features = CITY.districts.map(([name, lat, lng, r], i) => ({
+    type: 'Feature', properties: { color: DISTRICT_COLORS[i % DISTRICT_COLORS.length] },
+    geometry: { type: 'Polygon', coordinates: [circleRing(lat, lng, r)] },
+  }));
+  map.addSource('districts', { type: 'geojson', data: { type: 'FeatureCollection', features } });
+  map.addLayer({ id: 'districts-fill', type: 'fill', source: 'districts', paint: { 'fill-color': ['get', 'color'], 'fill-opacity': 0.09 } });
+  map.addLayer({ id: 'districts-line', type: 'line', source: 'districts', paint: { 'line-color': ['get', 'color'], 'line-width': 1.5, 'line-opacity': 0.7, 'line-dasharray': [3, 3] } });
+  CITY.districts.forEach(([name, lat, lng, , note], i) => {
+    const el = document.createElement('div');
+    el.className = 'district';
+    el.innerHTML = `<span style="--dc:${DISTRICT_COLORS[i % DISTRICT_COLORS.length]}">${esc(name)}</span>`;
+    domMarker(lat, lng, el, () => openDistrict(name, note, lat, lng), 'center').addTo(map);
   });
+}
+
+function drawLines() {
+  const features = state.places.filter((p) => p.line).map((p) => ({
+    type: 'Feature',
+    properties: { id: p.id, color: LINE_COLORS[p.category] || LINE_COLORS.other },
+    geometry: { type: 'MultiLineString', coordinates: p.line.map((seg) => seg.map(([la, lo]) => [lo, la])) },
+  }));
+  map.addSource('lines', { type: 'geojson', data: { type: 'FeatureCollection', features } });
+  const lay = { 'line-cap': 'round', 'line-join': 'round' };
+  map.addLayer({ id: 'lines-casing', type: 'line', source: 'lines', layout: lay, paint: { 'line-color': '#fff', 'line-width': ['interpolate', ['linear'], ['zoom'], 12, 5, 17, 12], 'line-opacity': 0.85 } });
+  map.addLayer({ id: 'lines-main', type: 'line', source: 'lines', layout: lay, paint: { 'line-color': ['get', 'color'], 'line-width': ['interpolate', ['linear'], ['zoom'], 12, 3, 17, 7] } });
 }
 function openDistrict(name, note, lat, lng) {
   if (state.selected != null) { const prev = state.selected; state.selected = null; refreshMarker(prev); }
@@ -768,28 +868,17 @@ $('#btn-city').onclick = () => {
 
 /* ---------------- boot ---------------- */
 async function boot() {
-  const res = await fetch(CITY.data);
+  const res = await fetch(CITY.data, { cache: 'no-cache' });
   const data = await res.json();
   state.places = data.places;
   for (const p of state.places) {
     state.byId.set(p.id, p);
-    const m = L.marker([p.lat, p.lng], { icon: pinIcon(p), riseOnHover: true, zIndexOffset: p.priority === 1 ? 500 : p.priority === 3 ? -200 : 0 });
-    m.bindTooltip(p.name_ru, { permanent: true, direction: 'bottom', className: 'lbl' + (p.priority === 1 ? '' : ' minor'), offset: [0, 2] });
-    m.on('click', () => selectPlace(p.id, { fly: false }));
+    const m = domMarker(p.lat, p.lng, markerEl(p), () => selectPlace(p.id, { fly: false }));
+    m._on = false;
     state.markers.set(p.id, m);
-    if (p.line) {
-      // streets, paths and bridges are drawn along their real geometry
-      const color = LINE_COLORS[p.category] || LINE_COLORS.other;
-      const g = L.layerGroup([
-        L.polyline(p.line, { color: '#fff', weight: 11, opacity: 0.85, lineCap: 'round', lineJoin: 'round', interactive: false }),
-        L.polyline(p.line, { color, weight: 6, opacity: 0.95, lineCap: 'round', lineJoin: 'round' }),
-      ]);
-      g.eachLayer((l) => l.on('click', (e) => { L.DomEvent.stop(e); selectPlace(p.id, { fly: false }); }));
-      state.lines.set(p.id, g);
-    }
   }
-  drawDistricts();
   applyFilter();
+  mapReady.then(() => { drawDistricts(); drawLines(); applyFilter(); });
   const h = location.hash.match(/^#p(\d+)$/);
   if (h) selectPlace(+h[1], { push: false });
   else if (location.hash === '#hotel') openHotel();
