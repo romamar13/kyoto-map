@@ -2,7 +2,7 @@
 """Top up places with < 3 photos using Wikimedia Commons file search."""
 import json, os, re, subprocess, sys, glob
 sys.path.insert(0, os.path.dirname(__file__))
-from fetch_photos import api, download, BAD, CACHE_PATH, PHOTOS, ROOT
+from fetch_photos import api, download, BAD, CACHE_PATH, PHOTOS, PHOTO_URL, ROOT
 
 # Hand-tuned search terms where the name alone is too ambiguous
 TERMS = {
@@ -20,6 +20,8 @@ def search(term):
     return [(p['title'], p['imageinfo'][0]) for p in pages if p.get('imageinfo')]
 
 cache = json.load(open(CACHE_PATH))
+if len(sys.argv) > 1:  # terms file: {"id": ["term", ...]}
+    TERMS = {int(k): v for k, v in json.load(open(sys.argv[1])).items()}
 for pid, terms in TERMS.items():
     photos = cache.get(str(pid), [])
     if len(photos) >= 3:
@@ -43,7 +45,7 @@ for pid, terms in TERMS.items():
             meta = ii.get('extmetadata', {})
             artist = re.sub(r'<[^>]+>', '', meta.get('Artist', {}).get('value', '')).strip()
             lic = meta.get('LicenseShortName', {}).get('value', '')
-            photos.append({'src': f'photos/{pid}-{n}.jpg', 'thumb': f'photos/{pid}-{n}-t.jpg', 'page': ii.get('descriptionurl'),
+            photos.append({'src': f'{PHOTO_URL}{pid}-{n}.jpg', 'thumb': f'{PHOTO_URL}{pid}-{n}-t.jpg', 'page': ii.get('descriptionurl'),
                            'credit': ', '.join(x for x in [artist[:60], lic] if x) or 'Wikimedia Commons', 'title': title})
             seen.add(ii.get('descriptionurl'))
     cache[str(pid)] = photos

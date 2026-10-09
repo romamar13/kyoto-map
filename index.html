@@ -15,13 +15,14 @@
   <link rel="icon" href="icons/icon-192.png" type="image/png">
   <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
   <link rel="stylesheet" href="vendor/leaflet.css">
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
   <div id="map" aria-label="Карта Киото"></div>
 
   <header class="topbar">
     <div class="searchrow">
+      <button class="citybtn" id="btn-city" aria-label="Сменить город">Киото</button>
       <div class="search">
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
         <input id="q" type="search" placeholder="Поиск: храм, район, 清水…" autocomplete="off" enterkeyhint="search">
@@ -83,6 +84,6 @@
   <div class="toast" id="toast"></div>
 
   <script src="vendor/leaflet.js"></script>
-  <script src="app.js?v=7"></script>
+  <script src="app.js?v=8"></script>
 </body>
 </html>

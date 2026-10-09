@@ -2,15 +2,14 @@
 """Batched Wikipedia photo + coordinate fetch (few API calls, friendly to rate limits).
 Writes data/photo_cache.json ({id: [photo,...]}) and data/wiki_coords.json, downloads photos/<id>-<n>.jpg.
 """
-import glob, json, os, re, subprocess, time, urllib.error, urllib.parse, urllib.request
+import sys, os
+sys.path.insert(0, os.path.dirname(__file__))
+import glob, json, os, sys, re, subprocess, time, urllib.error, urllib.parse, urllib.request
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PHOTOS = os.path.join(ROOT, 'photos')
+from citypaths import ROOT, PHOTOS, PHOTO_URL, PARTS, CACHE_PATH, COORDS_PATH
 UA = 'KyotoPersonalMap/1.0 (personal non-commercial trip map)'
 MAXP = 4
 BAD = re.compile(r'(map|karte|plan|logo|icon|flag|emblem|seal|crest|kamon|locator|diagram|signature|stamp|symbol|location|route|chart|位置|地図|紋|\.svg|\.png|\.gif|\.tif|\.webm|\.ogg|\.pdf)', re.I)
-CACHE_PATH = os.path.join(ROOT, 'data/photo_cache.json')
-COORDS_PATH = os.path.join(ROOT, 'data/wiki_coords.json')
 
 
 def api(lang, params):
@@ -104,7 +103,7 @@ def download(url, path):
 
 
 def main():
-    places = sorted([p for f in glob.glob(os.path.join(ROOT, 'data/parts/*.json')) for p in json.load(open(f))], key=lambda p: p['id'])
+    places = sorted([p for f in glob.glob(os.path.join(PARTS, '*.json')) for p in json.load(open(f))], key=lambda p: p['id'])
     cache = json.load(open(CACHE_PATH)) if os.path.exists(CACHE_PATH) else {}
     coords = {}
 
@@ -161,7 +160,7 @@ def main():
             meta = ii.get('extmetadata', {})
             artist = re.sub(r'<[^>]+>', '', meta.get('Artist', {}).get('value', '')).strip()
             lic = meta.get('LicenseShortName', {}).get('value', '')
-            photos.append({'src': f'photos/{fn}', 'thumb': f'photos/{pid}-{n}-t.jpg',
+            photos.append({'src': f'{PHOTO_URL}{fn}', 'thumb': f'{PHOTO_URL}{pid}-{n}-t.jpg',
                            'page': ii.get('descriptionurl'), 'credit': ', '.join(x for x in [artist[:60], lic] if x) or 'Wikimedia Commons'})
             if len(photos) >= MAXP:
                 break

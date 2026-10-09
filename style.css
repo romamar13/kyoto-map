@@ -20,6 +20,9 @@
   --c-market: #c98a1b;
   --c-museum: #5f6b7a;
   --c-other: #5f6b7a;
+  --c-shopping: #c98a1b;
+  --c-view: #2a8fb8;
+  --c-town: #8a5a3c;
   --safe-b: env(safe-area-inset-bottom, 0px);
   --safe-t: env(safe-area-inset-top, 0px);
   color-scheme: light;
@@ -81,6 +84,20 @@ svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; 
   flex: 1; border: 0; outline: 0; background: transparent; color: var(--ink);
   font-size: 16px; height: 100%; min-width: 0;
 }
+.citybtn {
+  flex: none; height: 44px; border: 0; border-radius: 14px; padding: 0 12px 0 14px; font-weight: 700; font-size: 15px;
+  background: var(--accent); color: #fff; box-shadow: var(--shadow); display: flex; align-items: center; gap: 4px;
+}
+.citybtn::after { content: "⇄"; font-weight: 400; opacity: .85; font-size: 14px; }
+.leaflet-marker-icon.district { background: none; border: 0; }
+.district span {
+  display: inline-block; transform: translate(-50%, -50%); white-space: nowrap; cursor: pointer;
+  font-size: 13px; font-weight: 800; letter-spacing: .3px; text-transform: uppercase; color: var(--dc);
+  text-shadow: 0 0 3px #fff, 0 0 3px #fff, 0 0 4px #fff, 0 0 6px #fff; padding: 4px 6px;
+}
+@media (prefers-color-scheme: dark) { .district span { text-shadow: 0 0 3px #000, 0 0 4px #000, 0 0 6px #000; filter: brightness(1.35); } }
+.hide-labels .district span { font-size: 11px; }
+.near-h { margin: 18px 0 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .6px; color: var(--ink-3); }
 .iconbtn {
   width: 44px; height: 44px; border: 0; border-radius: 14px; background: var(--surface);
   box-shadow: var(--shadow); display: grid; place-items: center;

@@ -15,18 +15,103 @@ const CATS = {
   market: { label: 'Рынки', one: 'Рынок', color: 'var(--c-market)' },
   museum: { label: 'Музеи', one: 'Музей', color: 'var(--c-museum)' },
   other: { label: 'Другое', one: 'Достопримечательность', color: 'var(--c-other)' },
+  shopping: { label: 'Шоппинг', one: 'Шоппинг', color: 'var(--c-street)' },
+  view: { label: 'Виды', one: 'Смотровая / вид', color: 'var(--c-view)' },
+  town: { label: 'Города', one: 'Город / поездка', color: 'var(--c-town)' },
 };
-const HOTEL = {
-  name: 'Shizutetsu Hotel Prezio Kyoto Shijo',
-  name_ja: '静鉄ホテルプレジオ京都四条',
-  lat: 35.00507, lng: 135.7549,
-  address_ja: '京都市中京区西洞院通錦小路上る古西町452',
-  address_en: '452 Konishi-cho, Nishinotoin-dori Nishikikoji-agaru, Nakagyo-ku, Kyoto 604-8227',
-  phone: '075-741-7891',
-  station: 'Метро «Сидзё» (линия Карасума) или Hankyu «Карасума» — 6 мин пешком; станции соединены под землёй',
+/* ---------------- cities ---------------- */
+const CITIES = {
+  kyoto: {
+    name: 'Киото',
+    data: 'data/places.json',
+    center: [35.0116, 135.7681], zoom: 12, minZoom: 9,
+    bounds: [[34.4, 135.2], [35.6, 136.4]],
+    hotel: {
+      name: 'Shizutetsu Hotel Prezio Kyoto Shijo',
+      name_ja: '静鉄ホテルプレジオ京都四条',
+      lat: 35.00507, lng: 135.7549,
+      address_ja: '京都市中京区西洞院通錦小路上る古西町452',
+      address_en: '452 Konishi-cho, Nishinotoin-dori Nishikikoji-agaru, Nakagyo-ku, Kyoto 604-8227',
+      phone: '075-741-7891',
+      station: 'Метро «Сидзё» (линия Карасума) или Hankyu «Карасума» — 6 мин пешком; станции соединены под землёй',
+    },
+    chips: [
+      { key: 'temple', label: 'Храмы', color: 'var(--c-temple)', test: (p) => p.category === 'temple' },
+      { key: 'shrine', label: 'Святилища', color: 'var(--c-shrine)', test: (p) => p.category === 'shrine' },
+      { key: 'nature', label: 'Сады и природа', color: 'var(--c-nature)', test: (p) => ['nature', 'garden'].includes(p.category) },
+      { key: 'street', label: 'Улицы и рынки', color: 'var(--c-street)', test: (p) => ['street', 'market'].includes(p.category) },
+      { key: 'museum', label: 'Музеи и другое', color: 'var(--c-museum)', test: (p) => ['museum', 'other', 'castle'].includes(p.category) },
+    ],
+    unesco: true,
+    note: 'Номера 1–81 — как на карте Rakuyo Taxi, 82+ — дополнительные места.',
+    offline: [[[34.86, 135.62], [35.14, 135.92], 10, 14], [[34.93, 135.66], [35.07, 135.81], 15, 15], [[34.96, 135.74], [35.04, 135.80], 16, 16]],
+    districts: [],
+  },
+  tokyo: {
+    name: 'Токио',
+    data: 'data/tokyo.json',
+    center: [35.68, 139.76], zoom: 12, minZoom: 8,
+    bounds: [[34.7, 138.2], [37.0, 141.0]],
+    hotel: {
+      name: 'Dormy Inn Tokyo Hatchobori',
+      name_ja: '亀島川温泉 新川の湯 ドーミーイン東京八丁堀',
+      lat: 35.67443, lng: 139.78076,
+      address_ja: '東京都中央区新川2-20-4',
+      address_en: '2-20-4 Shinkawa, Chuo-ku, Tokyo 104-0033',
+      phone: '03-5541-6700',
+      station: 'JR Keiyo «Hatchobori» (выход B4) — 2 мин; метро Hibiya «Hatchobori», Tozai/Hibiya «Kayabacho» — 5–7 мин',
+    },
+    chips: [
+      { key: 'culture', label: 'Культура', color: 'var(--c-temple)', test: (p) => p.kind === 'culture' },
+      { key: 'shopping', label: 'Шоппинг', color: 'var(--c-street)', test: (p) => p.kind === 'shopping' },
+      { key: 'town', label: 'Города и поездки', color: 'var(--c-town)', test: (p) => p.kind === 'town' },
+      { key: 'view', label: 'Виды и парки', color: 'var(--c-view)', test: (p) => p.kind === 'view' },
+    ],
+    unesco: false,
+    note: 'Цвет метки — тип места. Полупрозрачные зоны — районы Токио, нажмите на название района. «Города и поездки» — пригороды и города на день, в карточке есть блок «Как добраться».',
+    offline: [[[35.55, 139.6], [35.8, 139.9], 10, 13], [[35.62, 139.66], [35.74, 139.83], 14, 15], [[35.65, 139.69], [35.72, 139.81], 16, 16]],
+    // tourist districts drawn as soft zones; r in metres
+    districts: [
+      ['Асакуса', 35.7130, 139.7960, 650, 'Старый Токио: Сэнсо-дзи, Накамисэ, рикши, вид на Скайтри. Лучше рано утром или вечером, когда храм подсвечен.'],
+      ['Уэно', 35.7135, 139.7735, 750, 'Парк с главными музеями (Национальный музей, зоопарк) и шумный рынок Амэёко под ж/д путями.'],
+      ['Янака', 35.7255, 139.7670, 550, 'Довоенный Токио: храмы, кладбище, кошки, торговая улочка Янака Гиндза. Тихо и атмосферно.'],
+      ['Акихабара', 35.6998, 139.7712, 480, 'Электроника, аниме, манга, ретро-игры, мэйд-кафе. По выходным главная улица Тюо-дори пешеходная.'],
+      ['Канда · Дзимботё', 35.6960, 139.7590, 480, 'Квартал букинистов и карри-ресторанов, святилище Канда Мёдзин рядом с Акихабарой.'],
+      ['Маруноути', 35.6812, 139.7650, 550, 'Деловой центр у станции Токио и Императорского дворца: красный кирпичный вокзал, Character Street.'],
+      ['Нихонбаси', 35.6840, 139.7745, 450, 'Исторический торговый центр Эдо: мост Нихонбаси, универмаги Мицукоси и Такасимая.'],
+      ['Гиндза', 35.6717, 139.7650, 580, 'Люкс-шоппинг, флагманы Uniqlo, Itoya, Ginza Six, театр Кабукидза. По выходным Тюо-дори пешеходная.'],
+      ['Цукидзи', 35.6655, 139.7705, 380, 'Внешний рынок: суши, тамагояки, морепродукты с утра до обеда.'],
+      ['Цукисима', 35.6625, 139.7830, 420, 'Улица мондзя-яки — местная еда, рядом с отелем.'],
+      ['Хаттёбори · Сингава', 35.6745, 139.7800, 380, 'Наш район: тихий, у реки Камэдзима. До Гиндзы и Токио-эки — 1–2 станции.'],
+      ['Фукагава · Киёсуми', 35.6790, 139.7975, 620, 'Сады Киёсуми, кофейни (Blue Bottle), Музей Фукагава Эдо, Томиока Хатимангу.'],
+      ['Рёгоку', 35.6965, 139.7930, 480, 'Сумо: арена Кокугикан, школы борцов, тянко-набэ, музеи Хокусая и Эдо-Токио.'],
+      ['Роппонги', 35.6628, 139.7314, 600, 'Арт-треугольник (Мори, Национальный центр искусств, Сантори), небоскрёбы и ночная жизнь.'],
+      ['Адзабу · Токийская башня', 35.6575, 139.7445, 480, 'Токийская башня, храм Дзодзё-дзи, новый комплекс Адзабудай Хиллз с teamLab.'],
+      ['Одайба', 35.6265, 139.7760, 1200, 'Искусственный остров: Гандам, Радужный мост, Мирайкан, торговые центры, вечерние виды на залив.'],
+      ['Тоёсу', 35.6455, 139.7895, 650, 'Новый рыбный рынок с аукционом тунца и teamLab Planets.'],
+      ['Сибуя', 35.6595, 139.7005, 600, 'Скрэмбл-перекрёсток, Хатико, Shibuya Sky, Parco (Nintendo, Pokémon), молодёжная мода.'],
+      ['Харадзюку · Омотэсандо', 35.6700, 139.7065, 600, 'Такэсита-дори и каваий-культура, рядом — архитектурный бульвар Омотэсандо и Кэт-стрит.'],
+      ['Синдзюку', 35.6925, 139.7010, 800, 'Небоскрёбы, бесплатная смотровая мэрии, Кабукитё, Омоидэ-ёкотё и Голден Гай, парк Синдзюку-гёэн.'],
+      ['Икэбукуро', 35.7295, 139.7110, 600, 'Sunshine City, Pokémon Center Mega, Отомэ-роуд (аниме для девушек), Animate.'],
+      ['Симокитадзава', 35.6615, 139.6680, 500, 'Винтаж, секонды, кофейни, маленькие театры и музыкальные клубы.'],
+      ['Накамэгуро · Дайканьяма', 35.6475, 139.7005, 600, 'Канал Мэгуро, кафе, Tsutaya T-Site — спокойный стильный Токио.'],
+      ['Эбису', 35.6467, 139.7105, 400, 'Yebisu Garden Place, музей пива, хорошие идзакаи и рамэн.'],
+      ['Накано', 35.7075, 139.6655, 380, 'Накано Бродвей — рай для коллекционеров аниме, фигурок и ретро-игр.'],
+      ['Коэндзи', 35.7050, 139.6495, 430, 'Винтаж, панк-сцена, дешёвые идзакаи — «альтернативный» Токио.'],
+      ['Китидзёдзи', 35.7030, 139.5800, 650, 'Парк Инокасира, Музей Гибли, уютные торговые улочки.'],
+      ['Сугамо', 35.7335, 139.7395, 380, '«Харадзюку для бабушек»: Дзидзо-дори, красное бельё на удачу, традиционные сладости.'],
+    ],
+  },
 };
+const CITY_KEY = CITIES[LS.get('city', 'kyoto')] ? LS.get('city', 'kyoto') : 'kyoto';
+const CITY = CITIES[CITY_KEY];
+const HOTEL = CITY.hotel;
+// Kyoto keeps its original storage keys; other cities are namespaced
+const ck = (k) => (CITY_KEY === 'kyoto' ? k : `${CITY_KEY}:${k}`);
+const KIND_LABEL = { culture: 'Культура', shopping: 'Шоппинг', town: 'Поездка за город', view: 'Виды и парки' };
+
 // SVG strokes can't use CSS variables, so polylines get plain hex colours
-const LINE_COLORS = { street: '#e0901a', market: '#e0901a', nature: '#2f9a5a', garden: '#2f9a5a', other: '#6b7a8c', museum: '#6b7a8c', temple: '#3b5ba5', shrine: '#d24a2c', castle: '#7a4fa0' };
+const LINE_COLORS = { street: '#e0901a', market: '#e0901a', nature: '#2f9a5a', garden: '#2f9a5a', other: '#6b7a8c', museum: '#6b7a8c', temple: '#3b5ba5', shrine: '#d24a2c', castle: '#7a4fa0', shopping: '#e0901a', view: '#2a8fb8', town: '#8a5a3c' };
 const CROWD_TXT = ['', 'почти пусто', 'спокойно', 'умеренно', 'людно', 'очень людно'];
 
 const state = {
@@ -34,9 +119,9 @@ const state = {
   byId: new Map(),
   markers: new Map(),
   lines: new Map(), // id -> layer group with street/path polylines
-  visited: new Set(LS.get('visited', [])),
-  favs: new Set(LS.get('favs', [])),
-  filter: LS.get('filter', { cat: 'all', must: false, unesco: false, fav: false, hideVisited: false }),
+  visited: new Set(LS.get(ck('visited'), [])),
+  favs: new Set(LS.get(ck('favs'), [])),
+  filter: LS.get(ck('filter'), { cat: 'all', must: false, unesco: false, fav: false, hideVisited: false }),
   q: '',
   sort: LS.get('sort', 'priority'),
   me: null,
@@ -53,12 +138,12 @@ const TILE_URL = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Str
 const map = L.map('map', {
   zoomControl: false,
   attributionControl: true,
-  minZoom: 9,
   maxZoom: 19,
-  maxBounds: [[34.4, 135.2], [35.6, 136.4]],
+  minZoom: CITY.minZoom,
+  maxBounds: CITY.bounds,
   maxBoundsViscosity: 0.8,
   tap: false,
-}).setView(LS.get('view', { c: [35.0116, 135.7681] }).c, LS.get('view', { z: 12 }).z);
+}).setView(LS.get(ck('view'), { c: CITY.center }).c, LS.get(ck('view'), { z: CITY.zoom }).z);
 
 L.tileLayer(TILE_URL, {
   maxNativeZoom: 19,
@@ -75,7 +160,7 @@ function updateLabelClass() {
   el.classList.toggle('hide-labels-minor', z < 15);
 }
 map.on('zoomend', updateLabelClass);
-map.on('moveend', () => LS.set('view', { c: [map.getCenter().lat, map.getCenter().lng], z: map.getZoom() }));
+map.on('moveend', () => LS.set(ck('view'), { c: [map.getCenter().lat, map.getCenter().lng], z: map.getZoom() }));
 updateLabelClass();
 
 function pinHtml(p) {
@@ -128,16 +213,11 @@ const fmtDist = (km) => (km < 1 ? `${Math.round(km * 1000 / 10) * 10} м` : `${k
 const CHIP_DEFS = [
   { key: 'all', label: 'Все' },
   { key: 'must', label: '★ Главное', flag: true },
-  { key: 'unesco', label: 'ЮНЕСКО', flag: true },
+  ...(CITY.unesco ? [{ key: 'unesco', label: 'ЮНЕСКО', flag: true }] : []),
   { key: 'fav', label: '♥ Избранное', flag: true },
-  { key: 'temple', label: 'Храмы', cat: true },
-  { key: 'shrine', label: 'Святилища', cat: true },
-  { key: 'nature', label: 'Сады и природа', cat: true },
-  { key: 'street', label: 'Улицы и рынки', cat: true },
-  { key: 'museum', label: 'Музеи и другое', cat: true },
+  ...CITY.chips.map((c) => ({ ...c, cat: true })),
   { key: 'hideVisited', label: 'Скрыть посещённые', flag: true },
 ];
-const CAT_GROUPS = { nature: ['nature', 'garden'], street: ['street', 'market'], museum: ['museum', 'other', 'castle'] };
 
 function renderChips() {
   const f = state.filter;
@@ -146,7 +226,7 @@ function renderChips() {
     if (c.key === 'all') on = f.cat === 'all' && !f.must && !f.unesco && !f.fav;
     else if (c.flag) on = !!f[c.key];
     else on = f.cat === c.key;
-    const dot = c.cat ? `<span class="dot" style="background:${(CATS[c.key] || CATS.other).color}"></span>` : '';
+    const dot = c.cat ? `<span class="dot" style="background:${c.color}"></span>` : '';
     return `<button class="chip${on ? ' on' : ''}" data-k="${c.key}">${dot}${c.label}</button>`;
   }).join('');
 }
@@ -159,7 +239,7 @@ $('#chips').addEventListener('click', (e) => {
   if (k === 'all') Object.assign(f, { cat: 'all', must: false, unesco: false, fav: false });
   else if (def.flag) f[k] = !f[k];
   else f.cat = f.cat === k ? 'all' : k;
-  LS.set('filter', f);
+  LS.set(ck('filter'), f);
   applyFilter();
 });
 
@@ -170,8 +250,8 @@ function matches(p) {
   if (f.fav && !state.favs.has(p.id)) return false;
   if (f.hideVisited && state.visited.has(p.id)) return false;
   if (f.cat !== 'all') {
-    const g = CAT_GROUPS[f.cat] || [f.cat];
-    if (!g.includes(p.category)) return false;
+    const chip = CITY.chips.find((c) => c.key === f.cat);
+    if (chip && !chip.test(p)) return false;
   }
   if (state.q) {
     const hay = `${p.id} ${p.name_ru} ${p.name_en} ${p.name_ja} ${p.area} ${p.short}`.toLowerCase();
@@ -309,9 +389,9 @@ function renderPlace(p) {
         ${st ? `<span class="badge ${st.open ? 'open' : 'closed'}">${st.text}</span>` : ''}
         ${p.priority === 1 ? '<span class="badge must">★ Must-see</span>' : ''}
         ${p.unesco ? '<span class="badge unesco">ЮНЕСКО</span>' : ''}
-        <span class="badge">${cat.one}</span>
+        <span class="badge">${p.kind === 'town' ? KIND_LABEL.town : cat.one}</span>
         <span class="badge">${esc(p.area)}${dist}</span>
-        ${p.source === 'extra' ? '<span class="badge">не с карты такси</span>' : ''}
+        ${CITY_KEY === 'kyoto' && p.source === 'extra' ? '<span class="badge">не с карты такси</span>' : ''}
       </div>
 
       <div class="actions">
@@ -326,6 +406,10 @@ function renderPlace(p) {
       ${p.tip ? `<div class="tipbox"><b>Как лучше посетить</b>${esc(p.tip)}</div>` : ''}
 
       <div class="facts">
+        ${p.getting_there ? `<div class="fact"><div class="ic">🚆</div><div>
+          <h3>Как добраться</h3>
+          <p>${esc(p.getting_there)}</p>
+        </div></div>` : ''}
         <div class="fact"><div class="ic">🕒</div><div>
           <h3>Время</h3>
           <p>${esc(p.hours)}</p>
@@ -429,6 +513,8 @@ $('#btn-hotel').onclick = openHotel;
 $('#sheet-body').addEventListener('click', (e) => {
   const img = e.target.closest('.gallery img');
   if (img) return openLightbox(state.byId.get(state.selected), +img.dataset.i);
+  const row = e.target.closest('.row');
+  if (row) return selectPlace(+row.dataset.id);
   const b = e.target.closest('[data-act]');
   if (!b) return;
   if (b.dataset.act === 'copy') {
@@ -438,7 +524,7 @@ $('#sheet-body').addEventListener('click', (e) => {
   const id = state.selected;
   const set = b.dataset.act === 'visited' ? state.visited : state.favs;
   set.has(id) ? set.delete(id) : set.add(id);
-  LS.set(b.dataset.act === 'visited' ? 'visited' : 'favs', [...set]);
+  LS.set(ck(b.dataset.act === 'visited' ? 'visited' : 'favs'), [...set]);
   if (b.dataset.act === 'visited' && set.has(id)) toast('Отмечено как посещённое ✓');
   refreshMarker(id);
   const sc = $('#sheet-body').scrollTop;
@@ -559,10 +645,10 @@ document.addEventListener('visibilitychange', () => {
 $('#btn-menu').onclick = () => { renderMenu(); openSheet('menu'); };
 function renderMenu() {
   const total = state.places.length;
-  const legend = ['temple', 'shrine', 'castle', 'garden', 'street', 'museum']
+  const legend = (CITY_KEY === 'kyoto' ? ['temple', 'shrine', 'castle', 'garden', 'street', 'museum'] : ['temple', 'shrine', 'museum', 'shopping', 'view', 'town', 'garden'])
     .map((k) => `<span><i style="background:${CATS[k].color}"></i>${CATS[k].label}</span>`).join('');
   $('#menu-body').innerHTML = `<div class="menu">
-    <h2>Киото</h2>
+    <h2>${CITY.name}</h2>
     <div class="stat">
       <div><b>${state.visited.size}<small style="font-size:14px;color:var(--ink-3)"> / ${total}</small></b><span>посещено</span></div>
       <div><b>${state.favs.size}</b><span>в избранном</span></div>
@@ -575,13 +661,13 @@ function renderMenu() {
     <div class="progress" id="m-prog" hidden><i></i></div>
     <p id="m-prog-t" hidden></p>
     <button class="btn" id="m-reset">↺&nbsp; Сбросить отметки «посетил»</button>
-    <p>Номера 1–81 — как на карте Rakuyo Taxi, 82+ — дополнительные места. Часы и цены собраны осенью 2026 и могут меняться — особенно в сезон сакуры/клёнов и на Новый год. «Открыто сейчас» — по японскому времени и типичному графику, без учёта выходных.</p>
+    <p>${CITY.note} Часы и цены собраны осенью 2026 и могут меняться — особенно в праздники и сезон клёнов. «Открыто сейчас» — по японскому времени и типичному графику, без учёта выходных.</p>
     <p>Установить как приложение: в Safari «Поделиться» → «На экран „Домой“».</p>
   </div>`;
   $('#m-reset').onclick = () => {
     if (!state.visited.size) return;
     const ids = [...state.visited];
-    state.visited.clear(); LS.set('visited', []);
+    state.visited.clear(); LS.set(ck('visited'), []);
     ids.forEach(refreshMarker); renderMenu(); toast('Отметки сброшены');
   };
   $('#m-offline').onclick = downloadOffline;
@@ -602,11 +688,9 @@ function tileUrlsForBBox(b, zMin, zMax) {
 async function downloadOffline() {
   const btn = $('#m-offline'), prog = $('#m-prog'), pt = $('#m-prog-t');
   btn.disabled = true; prog.hidden = false; pt.hidden = false;
-  // central Kyoto in detail, wider area (Uji, Otsu, Arashiyama, Ohara) less detailed
+  // city centre in detail, wider area less detailed
   const urls = [
-    ...tileUrlsForBBox([[34.86, 135.62], [35.14, 135.92]], 10, 14),
-    ...tileUrlsForBBox([[34.93, 135.66], [35.07, 135.81]], 15, 15),
-    ...tileUrlsForBBox([[34.96, 135.74], [35.04, 135.80]], 16, 16),
+    ...CITY.offline.flatMap(([sw, ne, z1, z2]) => tileUrlsForBBox([sw, ne], z1, z2)),
     ...state.places.flatMap((p) => (p.photos || []).flatMap((ph) => [ph.src, ph.thumb].filter(Boolean))),
   ];
   const cache = await caches.open('kyoto-runtime');
@@ -629,7 +713,7 @@ async function downloadOffline() {
     }
   }
   await Promise.all(Array.from({ length: 6 }, worker));
-  pt.textContent = fail ? `Готово, не скачалось: ${fail}` : 'Готово — карта Киото и фото доступны без интернета';
+  pt.textContent = fail ? `Готово, не скачалось: ${fail}` : `Готово — карта (${CITY.name}) и фото доступны без интернета`;
   btn.disabled = false;
 }
 
@@ -641,9 +725,50 @@ function toast(msg) {
   clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
+/* ---------------- districts ---------------- */
+const DISTRICT_COLORS = ['#e05a47', '#3b7dd8', '#2f9a5a', '#c98a1b', '#8a5ad8', '#d2477e', '#1f9aa8'];
+function drawDistricts() {
+  CITY.districts.forEach(([name, lat, lng, r, note], i) => {
+    const color = DISTRICT_COLORS[i % DISTRICT_COLORS.length];
+    L.circle([lat, lng], { radius: r, color, weight: 1.5, dashArray: '5 6', opacity: 0.7, fillColor: color, fillOpacity: 0.09, interactive: false }).addTo(map);
+    const lbl = L.marker([lat, lng], {
+      icon: L.divIcon({ className: 'district', html: `<span style="--dc:${color}">${esc(name)}</span>`, iconSize: [0, 0] }),
+      zIndexOffset: -1000,
+    }).addTo(map);
+    lbl.on('click', () => openDistrict(name, note, lat, lng));
+  });
+}
+function openDistrict(name, note, lat, lng) {
+  if (state.selected != null) { const prev = state.selected; state.selected = null; refreshMarker(prev); }
+  const near = state.places
+    .map((p) => ({ p, d: distKm([lat, lng], [p.lat, p.lng]) }))
+    .filter((x) => x.d < 1.2).sort((a, b) => a.d - b.d).slice(0, 8);
+  $('#sheet-body').innerHTML = `<div class="pd" style="padding-top:22px">
+    <h1>${esc(name)}</h1>
+    <p class="lead">${esc(note)}</p>
+    <div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(name + ' Tokyo')}" target="_blank" rel="noopener">${ICON_MAP}Google Maps</a>
+    <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}&travelmode=transit" target="_blank" rel="noopener">${ICON_ROUTE}Маршрут</a></div>
+    ${near.length ? `<h3 class="near-h">Места рядом</h3>` : ''}
+  </div>
+  ${near.map(({ p }) => `<button class="row" data-id="${p.id}">${p.photos?.[0] ? `<img class="th" src="${esc(p.photos[0].thumb || p.photos[0].src)}" alt="">` : `<div class="th ph" style="background:${(CATS[p.category] || CATS.other).color}">${p.id}</div>`}<div><div class="nm">${esc(p.name_ru)}</div><div class="sh">${esc(p.short)}</div></div></button>`).join('')}`;
+  $('#sheet-body').scrollTop = 0;
+  openSheet('sheet');
+  flyAboveSheet(lat, lng);
+}
+
+/* ---------------- city switch ---------------- */
+$('#btn-city').textContent = CITY.name;
+document.title = `${CITY.name} · карта`;
+$('#btn-city').onclick = () => {
+  const keys = Object.keys(CITIES);
+  const next = keys[(keys.indexOf(CITY_KEY) + 1) % keys.length];
+  LS.set('city', next);
+  location.replace(location.pathname + location.search);
+};
+
 /* ---------------- boot ---------------- */
 async function boot() {
-  const res = await fetch('data/places.json');
+  const res = await fetch(CITY.data);
   const data = await res.json();
   state.places = data.places;
   for (const p of state.places) {
@@ -663,6 +788,7 @@ async function boot() {
       state.lines.set(p.id, g);
     }
   }
+  drawDistricts();
   applyFilter();
   const h = location.hash.match(/^#p(\d+)$/);
   if (h) selectPlace(+h[1], { push: false });

@@ -1,9 +1,9 @@
 // Bump VERSION when app files or data change.
-const VERSION = 'v3';
+const VERSION = 'v4';
 const SHELL = `kyoto-shell-${VERSION}`;
 const RUNTIME = 'kyoto-runtime';
 const SHELL_FILES = [
-  './', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest', 'data/places.json',
+  './', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest', 'data/places.json', 'data/tokyo.json',
   'vendor/leaflet.js', 'vendor/leaflet.css', 'icons/icon-192.png', 'icons/apple-touch-icon.png',
 ];
 
